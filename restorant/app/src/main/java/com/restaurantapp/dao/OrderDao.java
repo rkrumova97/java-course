@@ -5,13 +5,14 @@ import com.restaurantapp.models.Order;
 import java.util.List;
 
 public interface OrderDao {
-    public Order createOrder(Order Order);
+    public Order createOrder(Order Order) throws Exception;
 
-    public Order readOrder(Long id);
+    public Order readOrder(Long id) throws Exception;
 
-    public List<Order> readAllOrder();
+    public List<Order> readAllOrder() throws Exception;
 
-    public Order updateOrder(Order Order);
+
+    Order updateOrder(Order order, String changedAttribute, Object changeValue);
 
     public void deleteOrder(Long id);
 }

@@ -6,10 +6,9 @@ import com.restaurantapp.models.Restaurant;
 import java.util.List;
 
 public interface RestaurantDao {
-    public Restaurant readRestaurant(Long id);
+    public Restaurant readRestaurant(Long id) throws Exception;
 
-    public List<Restaurant> readAllRestaurant();
+    public List<Restaurant> readAllRestaurant() throws Exception;
 
-    public Restaurant updateRestaurant(Restaurant Restaurant);
-
+    void updateRestaurant(Restaurant restaurant, String changedAttribute, Object changeValue);
 }

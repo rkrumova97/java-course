@@ -5,13 +5,13 @@ import com.restaurantapp.models.*;
 import java.util.List;
 
 public interface OfferDao {
-    public Offer createOffer(Offer offer);
+    public Offer createOffer(Offer offer) throws Exception;
 
-    public Offer readOffer(Long id);
+    public Offer readOffer(Long id) throws Exception;
 
-    public List<Offer> readAllOffer();
+    public List<Offer> readAllOffer() throws Exception;
 
-    public Offer updateOffer(Offer offer);
+    void updateOffer(Offer offer, String changedAttribute, Object changeValue);
 
     public void deleteOffer(Long id);
 }

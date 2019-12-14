@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionManager {
-    private static Connection con;
 
     public static Connection getConnection() throws Exception {
 
@@ -16,7 +15,7 @@ public class ConnectionManager {
             final String password = "postgres";
             Class.forName(db_driver); //Driver loading
 
-            con = DriverManager.getConnection(url, user, password);
+            Connection con = DriverManager.getConnection(url, user, password);
 
             System.out.println("Connected");
             return con;
