@@ -1,0 +1,33 @@
+package com.restaurantapp.dao.impl;
+
+import com.restaurantapp.dao.RestaurantDao;
+import com.restaurantapp.models.Restaurant;
+
+import org.junit.Test;
+
+public class RestaurantDaoImplUnitTest {
+    @Test
+    public void readAll_isCorrect() throws Exception {
+        RestaurantDao restaurantDao = new RestaurantDaoImpl();
+        assert !restaurantDao.readAllRestaurant().isEmpty();
+    }
+
+    @Test
+    public void readOne_isCorrect() throws Exception {
+        RestaurantDao restaurantDao = new RestaurantDaoImpl();
+        assert restaurantDao.readRestaurant(1L).getName().equals("Rest");
+    }
+
+    @Test
+    public void update_isCorrect() throws Exception {
+        RestaurantDao restaurantDao = new RestaurantDaoImpl();
+        Restaurant restaurant = Restaurant.builder()
+                .id(1L)
+                .address("")
+                .name("Rest")
+                .build();
+        restaurantDao.updateRestaurant(restaurant, "address", "Rest");
+        assert restaurantDao.readRestaurant(1L).getAddress().equals("Rest");
+
+    }
+}

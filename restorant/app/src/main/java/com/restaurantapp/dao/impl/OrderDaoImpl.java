@@ -18,7 +18,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -31,16 +34,18 @@ public class OrderDaoImpl implements OrderDao {
     private UserDao userDao = new UserDaoImpl();
     private OfferDao offerDao = new OfferDaoImpl();
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public Order createOrder(Order order) throws Exception {
         try {
             con = getConnection();
             ps = Objects.requireNonNull(con)
-                    .prepareStatement("INSERT INTO order (time, offer, user) VALUES(?, ?, ?)");
+                    .prepareStatement("INSERT INTO public.order ( offer, person, id) VALUES( ?, ?, ?)");
 
-            ps.setObject(1, order.getLocalDateTime());
-            ps.setLong(2, order.getOffer().getId());
-            ps.setLong(3, order.getUser().getId());
+          //  ps.setTimestamp(1, Timestamp.valueOf(order.getLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss[.xxxxx]"))));
+            ps.setLong(1, order.getOffer().getId());
+            ps.setLong(2, order.getUser().getId());
+            ps.setLong(3, order.getId());
 
             ps.executeUpdate();
 
@@ -65,21 +70,21 @@ public class OrderDaoImpl implements OrderDao {
             System.out.println("Creating statement...");
 
             ps = con
-                    .prepareStatement("SELECT * FROM order WHERE id = ? AND is_deleted = false");
+                    .prepareStatement("SELECT * FROM public.order WHERE id = ? AND is_deleted = false");
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             //STEP 5: Extract data from result set
             while (rs.next()) {
 
-                LocalDateTime time = LocalDateTime.parse(rs.getTimestamp("time").toString());
-                Long offerId = rs.getLong("restaurant");
+                //ZonedDateTime time = ZonedDateTime.parse(rs.getTimestamp("time").toString());
+                Long offerId = rs.getLong("offer");
                 Offer offer = offerDao.readOffer(offerId);
-                Long userId = rs.getLong("category");
+                Long userId = rs.getLong("person");
                 User user = userDao.readUser(userId);
 
                 order = Order.builder()
                         .id(id)
-                        .localDateTime(time)
+                        .localDateTime(ZonedDateTime.now())
                         .offer(offer)
                         .user(user)
                         .build();
@@ -116,20 +121,20 @@ public class OrderDaoImpl implements OrderDao {
             System.out.println("Creating statement...");
             stmt = con.createStatement();
 
-            String sql = "SELECT * FROM order where is_deleted = false";
+            String sql = "SELECT * FROM public.order where is_deleted = false";
             ResultSet rs = stmt.executeQuery(sql);
             //STEP 5: Extract data from result set
             while (rs.next()) {
                 Long id = rs.getLong("id");
-                LocalDateTime time = LocalDateTime.parse(rs.getTimestamp("time").toString());
-                Long offerId = rs.getLong("restaurant");
+                //ZonedDateTime time = ZonedDateTime.parse(rs.getTimestamp("time").toString());
+                Long offerId = rs.getLong("offer");
                 Offer offer = offerDao.readOffer(offerId);
-                Long userId = rs.getLong("category");
+                Long userId = rs.getLong("person");
                 User user = userDao.readUser(userId);
 
                 orders.add(Order.builder()
                         .id(id)
-                        .localDateTime(time)
+                        .localDateTime(ZonedDateTime.now())
                         .offer(offer)
                         .user(user)
                         .build());
@@ -163,11 +168,11 @@ public class OrderDaoImpl implements OrderDao {
 
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
-            ps = con.prepareStatement("UPDATE order " +
-                    "SET ? = ? WHERE id = ?");
-            ps.setString(1, changedAttribute);
-            ps.setObject(2, changeValue);
-            ps.setObject(3, order.getId());
+            ps = con.prepareStatement("UPDATE public.order " +
+                    "SET "+changedAttribute+" = ? WHERE id = ?");
+
+            ps.setObject(1, changeValue);
+            ps.setObject(2, order.getId());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {
@@ -198,7 +203,7 @@ public class OrderDaoImpl implements OrderDao {
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
 
-            ps = con.prepareStatement("UPDATE  order SET is_deleted = true " +
+            ps = con.prepareStatement("UPDATE  public.order SET is_deleted = true " +
                     "WHERE id = ?");
             ps.setLong(1, id);
             ps.executeUpdate();

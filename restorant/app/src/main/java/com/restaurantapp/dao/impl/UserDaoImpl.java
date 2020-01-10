@@ -32,8 +32,8 @@ public class UserDaoImpl implements UserDao {
         try {
             con = getConnection();
             ps = Objects.requireNonNull(con)
-                    .prepareStatement("INSERT INTO user (address, email, first_name, last_name" +
-                            ", password, phone_number, token, username, role, restaurant) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    .prepareStatement("INSERT INTO public.user (address, email, first_name, last_name" +
+                            ", password, phone_number, token, username, role, restaurant,id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             ps.setString(1, user.getAddress());
             ps.setString(2, user.getEmail());
@@ -45,6 +45,7 @@ public class UserDaoImpl implements UserDao {
             ps.setString(8, user.getUsername());
             ps.setString(9, user.getRole().getValue());
             ps.setLong(10, user.getRestaurant().getId());
+            ps.setLong(11,user.getId());
 
             ps.executeUpdate();
 
@@ -79,7 +80,7 @@ public class UserDaoImpl implements UserDao {
             System.out.println("Creating statement...");
 
             ps = con
-                    .prepareStatement("SELECT * FROM user WHERE id = ? AND is_deleted = false");
+                    .prepareStatement("SELECT * FROM public.user WHERE id = ? AND is_deleted = false");
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             //STEP 5: Extract data from result set
@@ -145,7 +146,7 @@ public class UserDaoImpl implements UserDao {
             System.out.println("Creating statement...");
             stmt = con.createStatement();
 
-            String sql = "SELECT * FROM user where is_deleted = false";
+            String sql = "SELECT * FROM public.user where is_deleted = false";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Long id = rs.getLong("id");
@@ -207,11 +208,11 @@ public class UserDaoImpl implements UserDao {
 
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
-            ps = con.prepareStatement("UPDATE user " +
-                    "SET ? = ? WHERE id = ?");
-            ps.setString(1, changedAttribute);
-            ps.setObject(2, changeValue);
-            ps.setObject(3, user.getId());
+            ps = con.prepareStatement("UPDATE public.user " +
+                    "SET "+changedAttribute+" = ? WHERE id = ?");
+
+            ps.setObject(1, changeValue);
+            ps.setObject(2, user.getId());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {
@@ -242,7 +243,7 @@ public class UserDaoImpl implements UserDao {
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
 
-            ps = con.prepareStatement("UPDATE  user SET is_deleted = true " +
+            ps = con.prepareStatement("UPDATE  public.user SET is_deleted = true " +
                     "WHERE id = ?");
             ps.setLong(1, id);
             ps.executeUpdate();

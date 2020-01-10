@@ -30,13 +30,15 @@ public class OfferDaoImpl implements OfferDao {
     public Offer createOffer(Offer offer) throws Exception {
         try {
             con = getConnection();
+            //TODO make the id autoincrement
             ps = Objects.requireNonNull(con)
-                    .prepareStatement("INSERT INTO offer (text, category, price, restaurant) VALUES(?, ?, ?, ?)");
+                    .prepareStatement("INSERT INTO offer (text, category, price, restaurant, id) VALUES(?, ?, ?, ?, ?)");
 
             ps.setString(1, offer.getText());
             ps.setLong(2, offer.getCategory().getId());
             ps.setLong(3, offer.getPrice());
             ps.setLong(4, offer.getRestaurant().getId());
+            ps.setLong(5, offer.getId());
 
             ps.executeUpdate();
 
@@ -75,8 +77,8 @@ public class OfferDaoImpl implements OfferDao {
                 offer = Offer.builder()
                         .id(id)
                         .price(price)
-                         .restaurant(restaurant)
-                         .category(category)
+                        .restaurant(restaurant)
+                        .category(category)
                         .text(text).build();
             }
             rs.close();
@@ -125,8 +127,8 @@ public class OfferDaoImpl implements OfferDao {
                 offers.add(Offer.builder()
                         .id(id)
                         .price(price)
-                         .restaurant(restaurant)
-                         .category(category)
+                        .restaurant(restaurant)
+                        .category(category)
                         .text(text).build());
             }
             rs.close();
@@ -159,10 +161,9 @@ public class OfferDaoImpl implements OfferDao {
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
             ps = con.prepareStatement("UPDATE offer " +
-                    "SET ? = ? WHERE id = ?");
-            ps.setString(1, changedAttribute);
-            ps.setObject(2, changeValue);
-            ps.setObject(3, offer.getId());
+                    "SET " + changedAttribute + " = ? WHERE id = ?");
+            ps.setObject(1, changeValue);
+            ps.setObject(2, offer.getId());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {

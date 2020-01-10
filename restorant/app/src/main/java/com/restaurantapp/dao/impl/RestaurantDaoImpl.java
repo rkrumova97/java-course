@@ -20,7 +20,6 @@ public class RestaurantDaoImpl implements RestaurantDao {
     private Connection con;
     private PreparedStatement ps;
     private CategoryDao categoryDao = new CategoryDaoImpl();
-    private RestaurantDao restaurantDao = new RestaurantDaoImpl();
 
     @Override
     public Restaurant readRestaurant(Long id) throws Exception {
@@ -38,14 +37,11 @@ public class RestaurantDaoImpl implements RestaurantDao {
             while (rs.next()) {
                 String name = rs.getString("name");
                 String address = rs.getString("address");
-                Long categoryId = rs.getLong("category");
-                Category category = categoryDao.readCategory(categoryId);
 
                 restaurant = Restaurant.builder()
                         .id(id)
                         .name(name)
                         .address(address)
-                        .categories(getCategories(id))
                         .build();
             }
             rs.close();
@@ -124,10 +120,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
             ps = con.prepareStatement("UPDATE restaurant " +
-                    "SET ? = ? WHERE id = ?");
-            ps.setString(1, changedAttribute);
-            ps.setObject(2, changeValue);
-            ps.setObject(3, restaurant.getId());
+                    " SET "+ changedAttribute + " = ? WHERE id = ? ");
+            ps.setObject(1, changeValue);
+            ps.setLong(2, restaurant.getId());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {

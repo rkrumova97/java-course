@@ -1,6 +1,7 @@
 package com.restaurantapp.models;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,5 +19,5 @@ public class Order {
 
     private Offer offer;
 
-    private LocalDateTime localDateTime;
+    private ZonedDateTime localDateTime;
 }
