@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grad_bg"
-    tools:context="com.restaurantapp.Activity_Login" >
+    tools:context="com.restaurantapp.Activity_Login">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp" >
+        android:layout_marginRight="30dp">
 
         <ImageView
             android:id="@+id/logo_pizza"
@@ -25,7 +25,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/logo_pizza" >
+            android:layout_below="@+id/logo_pizza">
 
             <TextView
                 android:id="@+id/tv_login"
@@ -43,32 +43,37 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_login"
                 android:layout_marginTop="50dp"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Username"
+                        android:labelFor="@id/username"
+                        android:text="@string/username"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
+                        android:autofillHints="Write your email here"
                         android:background="@drawable/et_bg"
                         android:fontFamily="sans-serif-light"
+                        android:inputType="text"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        tools:targetApi="o" />
 
                 </LinearLayout>
 
@@ -76,33 +81,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Password"
+                        android:labelFor="@id/password"
+                        android:text="@string/password"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
+                        android:autofillHints="Password"
                         android:background="@drawable/et_bg"
                         android:fontFamily="sans-serif-light"
+                        android:inputType="textPassword"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        tools:targetApi="o" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <Button
+                android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_below="@+id/linlay1"
@@ -120,33 +131,36 @@
 
         </RelativeLayout>
 
+
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rel1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" >
+        android:layout_marginRight="20dp">
 
         <Button
+            android:id="@+id/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
             android:fontFamily="sans-serif"
-            android:text="@string/join_us"
+            android:text="@string/join_us_now"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/btn_bg" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_bg"
             android:fontFamily="sans-serif"
-            android:text="Forgot Password?"
+            android:text="@string/forgot_password"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/btn_bg" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </RelativeLayout>
 

@@ -20,7 +20,7 @@ public class UserDaoImplUnitTest {
                 .username("anything")
                 .token("")
                 .username("")
-                .role(Role.SOMETHING)
+                .role(Role.EMPLOYEE)
                 .phoneNumber("")
                 .email("")
                 .lastName("")

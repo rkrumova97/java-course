@@ -1,7 +1,8 @@
 package com.restaurantapp.models;
 
 public enum Role {
-    SOMETHING("10");
+    CLIENT("10"),
+    EMPLOYEE("20");
 
     private String value;
 
@@ -10,7 +11,14 @@ public enum Role {
     }
 
     public static Role findByValue(String roleValue) {
-        return null;
+        switch (roleValue) {
+            case "10":
+                return CLIENT;
+            case "20":
+                return EMPLOYEE;
+            default:
+                return null;
+        }
     }
 
     public String getValue() {

@@ -1,7 +1,10 @@
-package com.restaurantapp;
+package com.restaurantapp.modules.client;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.restaurantapp.R;
 
 public class Activity_Story extends AppCompatActivity {
 

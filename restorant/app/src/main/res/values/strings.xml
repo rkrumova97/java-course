@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Login</string>
-    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="join_us_now">Join us Now</string>
     <string name="login_now">Login Now</string>
-    <string name="join_us">Join Us</string>
+    <string name="login">Login</string>
+    <string name="wrong_credentials">Wrong username or password.</string>
+    <string name="user">Profile</string>
 </resources>
