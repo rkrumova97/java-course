@@ -4,6 +4,13 @@
     <item android:id="@+id/user"
         android:title="@string/user"
         android:icon="@drawable/ic_action_name"
-        android:onClick="goToProfile"
+        app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/offer"
+        android:title="@string/user"
+        android:icon="@drawable/ic_offer"
+        app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/order"
+        android:title="@string/user"
+        android:icon="@drawable/ic_order"
         app:showAsAction="ifRoom|withText"/>
 </menu>

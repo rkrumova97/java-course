@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linear">
+        <!--        <ImageView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:src="@drawable/backgrd"-->
+        <!--            android:scaleType="centerCrop"-->
+        <!--            android:layout_marginBottom="25dp"-->
+        <!--            />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <!--                    <ImageView-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:layout_width="50dp"-->
+                    <!--                        android:layout_height="50dp"-->
+                    <!--                        android:src="@drawable/fb"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:gravity="bottom"-->
+                    <!--                        />-->
+                    <TextView
+                        android:id="@+id/sin"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="456 Friends"
+                        android:textColor="#85ffffff"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <!--                <ImageView-->
+                <!--                    android:layout_width="100dp"-->
+                <!--                    android:layout_height="100dp"-->
+                <!--                    android:src="@drawable/meninblack"-->
+                <!--                    android:gravity="bottom"-->
+                <!--                    />-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <!--                    <ImageView-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:layout_width="50dp"-->
+                    <!--                        android:layout_height="50dp"-->
+                    <!--                        android:src="@drawable/twitter"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:gravity="bottom"-->
+
+                    <!--                        />-->
+                    <TextView
+                        android:id="@+id/sinn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="562 Followings"
+                        android:textColor="#85ffffff"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/usrusr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="start"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:text="Name"
+                android:textColor="#a2a1b8"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/ususr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="end"
+                android:hint="Sam Enric"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:textColor="#181737"
+                android:textColorHint="#181737"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="start"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:text="Email"
+                android:textColor="#a2a1b8"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/maill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="end"
+                android:hint="sam@seotoolzz.com"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:textColor="#181737"
+                android:textColorHint="#1b193b"
+                android:textSize="16sp" />
+        </LinearLayout>
+        />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pswrd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="start"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:text="Password"
+                android:textColor="#a2a1b8"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/pswrdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="end"
+                android:hint="**********"
+                android:inputType="textPassword"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:textColor="#181737"
+                android:textColorHint="#1b193b"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fbook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="start"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:text="Facebook"
+                android:textColor="#a2a1b8"
+                android:textSize="16sp" />
+            <!--com.rey.material.widget.Switch!-->
+            <Switch
+                android:id="@+id/switcch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:padding="16dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/goooogleee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:fontFamily="Maven"
+                android:gravity="start"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:text="Google+"
+                android:textColor="#a2a1b8"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/goooglggeee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="end"
+                android:hint="Enabled"
+                android:maxLength="12"
+                android:padding="16dp"
+                android:textColorHint="#181737"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

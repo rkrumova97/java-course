@@ -8,10 +8,11 @@ import android.view.MenuItem;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
 
 public class HomePage extends AppCompatActivity {
-    MenuItem profile;
+    BottomNavigationView profile;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -19,13 +20,35 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_restaurant);
 
-        profile = findViewById(R.id.user);
+        profile = findViewById(R.id.bottom_navigation);
+        profile.setOnNavigationItemSelectedListener(i -> {
+            switch (i.getItemId()){
+                case R.id.user:
+                    goToProfile(i);
+                    return true;
+                case R.id.offer:
+                    goToOffer(i);
+                    return true;
+                case R.id.order:
+                    goToOrder(i);
+                    return true;
+                default:
+                    return super.onOptionsItemSelected(i);
+            }
 
+        });
     }
 
-    protected void goToProfile(){
+
+    public void goToProfile(MenuItem item) {
         startActivity(new Intent(this, ProfilePage.class));
     }
 
+    public void goToOrder(MenuItem item) {
+        startActivity(new Intent(this, ProfilePage.class));
+    }
 
+    public void goToOffer(MenuItem item) {
+        startActivity(new Intent(this, ProfilePage.class));
+    }
 }
