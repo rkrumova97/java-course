@@ -3,16 +3,18 @@ package com.restaurantapp.modules.restaurant;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
 import com.restaurantapp.R;
 
 public class HomePage extends AppCompatActivity {
-    BottomNavigationView profile;
+    MaterialCardView materialCardView1;
+    MaterialCardView materialCardView2;
+    MaterialCardView materialCardView3;
+
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -20,35 +22,16 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_restaurant);
 
-        profile = findViewById(R.id.bottom_navigation);
-        profile.setOnNavigationItemSelectedListener(i -> {
-            switch (i.getItemId()){
-                case R.id.user:
-                    goToProfile(i);
-                    return true;
-                case R.id.offer:
-                    goToOffer(i);
-                    return true;
-                case R.id.order:
-                    goToOrder(i);
-                    return true;
-                default:
-                    return super.onOptionsItemSelected(i);
-            }
+        materialCardView1 = findViewById(R.id.card_view1);
+        materialCardView1.setOnClickListener((i) -> startActivity(new Intent(this, ProfilePage.class)));
 
-        });
+        materialCardView2 = findViewById(R.id.card_view2);
+        materialCardView2.setOnClickListener((i) -> startActivity(new Intent(this, OrderPage.class)));
+
+        materialCardView3 = findViewById(R.id.card_view3);
+        materialCardView3.setOnClickListener((i) -> startActivity(new Intent(this, MenuPage.class)));
+
     }
 
 
-    public void goToProfile(MenuItem item) {
-        startActivity(new Intent(this, ProfilePage.class));
-    }
-
-    public void goToOrder(MenuItem item) {
-        startActivity(new Intent(this, ProfilePage.class));
-    }
-
-    public void goToOffer(MenuItem item) {
-        startActivity(new Intent(this, ProfilePage.class));
-    }
 }

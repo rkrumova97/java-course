@@ -14,6 +14,8 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".Activity_Registration" />
+        <activity android:name=".modules.restaurant.MenuPage" />
+        <activity android:name=".modules.restaurant.OrderPage" />
         <activity android:name=".modules.restaurant.HomePage" />
         <activity android:name=".modules.restaurant.ProfilePage" />
         <activity android:name=".modules.client.Activity_Story" />
@@ -24,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

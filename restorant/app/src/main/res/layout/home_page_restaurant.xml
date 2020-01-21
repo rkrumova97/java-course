@@ -1,60 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/grad_bg"
     tools:context="com.restaurantapp.modules.restaurant.HomePage">
 
-    <!-- Main content -->
-
-    <com.google.android.material.card.MaterialCardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:minHeight="200dp">
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view1"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/demo_card_text"/>
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="200dp"
+            app:cardBackgroundColor="@color/design_default_color_background"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            tools:targetApi="lollipop_mr1">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:minHeight="200dp">
-        <TextView
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_user"
+                    android:tag="image_tag" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dad8d8" />
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewName1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/croissant_one"
+                        android:text="@string/demo_card_text"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="36sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view2"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/offer_card"/>
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_below="@id/card_view1"
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            android:minHeight="200dp"
+            app:cardBackgroundColor="@color/design_default_color_background"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            tools:targetApi="lollipop_mr1">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:minHeight="200dp">
-        <TextView
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_offer"
+                    android:tag="image_tag" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dad8d8" />
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/croissant_one"
+                        android:text="@string/order_card"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="36sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view3"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/order_card"/>
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_below="@id/card_view2"
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            android:minHeight="200dp"
+            app:cardBackgroundColor="@color/design_default_color_background"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            tools:targetApi="lollipop_mr1">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_navigation_menu" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_menu"
+                    android:tag="image_tag" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#dad8d8" />
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewName3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/croissant_one"
+                        android:text="@string/offer_card"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="36sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
 </FrameLayout>
+

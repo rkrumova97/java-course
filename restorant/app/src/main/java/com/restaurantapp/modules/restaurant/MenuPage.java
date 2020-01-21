@@ -11,14 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
 
-public class ProfilePage extends AppCompatActivity {
+public class MenuPage extends AppCompatActivity {
     BottomNavigationView profile;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_page_r);
+        setContentView(R.layout.menu_page_r);
 
         profile = findViewById(R.id.bottom_navigation);
         profile.setOnNavigationItemSelectedListener(i -> {
@@ -37,6 +37,7 @@ public class ProfilePage extends AppCompatActivity {
             }
 
         });
+
 
     }
 

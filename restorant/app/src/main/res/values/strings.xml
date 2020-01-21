@@ -11,4 +11,15 @@
     <string name="demo_card_text">Go to your profile</string>
     <string name="offer_card">Go to add new offer</string>
     <string name="order_card">Process an order</string>
+    <string name="email_hint">sam@seotoolzz.com</string>
+    <string name="email">Email</string>
+    <string name="hint_pswd">**********</string>
+    <string name="facebook">Facebook</string>
+    <string name="first_name">First Name</string>
+    <string name="hint_name">Sam</string>
+    <string name="last_name">Last Name</string>
+    <string name="rest">Do you want to make changes for restaurant?</string>
+    <string name="restaurant_name">Restaurant name</string>
+    <string name="restaurant_address">Restaurant address</string>
+    <string name="save">Save changes</string>
 </resources>
