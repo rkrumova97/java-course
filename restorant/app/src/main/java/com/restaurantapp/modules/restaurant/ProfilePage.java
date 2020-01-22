@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,47 +76,54 @@ public class ProfilePage extends AppCompatActivity {
         Thread thread = new Thread() {
             @Override
             public void run() {
+                Looper.prepare();
                 try {
                     user[0] = userDao.readUser(emailKey);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                firstName = findViewById(R.id.first_name);
-                firstName.setText(user[0].getFirstName());
+                runOnUiThread(() -> {
+                    firstName = findViewById(R.id.first_name);
+                    firstName.setText(user[0].getFirstName());
 
-                lastName = findViewById(R.id.lastnm);
-                lastName.setText(user[0].getLastName());
+                    lastName = findViewById(R.id.lastnm);
+                    lastName.setText(user[0].getLastName());
 
-                email = findViewById(R.id.maill);
-                email.setText(emailKey);
+                    email = findViewById(R.id.maill);
+                    email.setText(emailKey);
 
-                lin1 = findViewById(R.id.lay1);
-                lin2 = findViewById(R.id.lay2);
-                lin3 = findViewById(R.id.lay3);
-                view = findViewById(R.id.lin1);
+                    lin1 = findViewById(R.id.lay1);
+                    lin2 = findViewById(R.id.lay2);
+                    lin3 = findViewById(R.id.lay3);
+                    view = findViewById(R.id.lin1);
 
 
-                lin1.setVisibility(View.INVISIBLE);
-                lin2.setVisibility(View.INVISIBLE);
-                lin3.setVisibility(View.INVISIBLE);
-                view.setVisibility(View.INVISIBLE);
+                    lin1.setVisibility(View.INVISIBLE);
+                    lin2.setVisibility(View.INVISIBLE);
+                    lin3.setVisibility(View.INVISIBLE);
+                    view.setVisibility(View.INVISIBLE);
 
-                restaurantName = findViewById(R.id.goooglggeee);
-                restaurantName.setText(user[0].getRestaurant().getName());
-                restaurantAddress = findViewById(R.id.address);
-                restaurantAddress.setText(user[0].getRestaurant().getAddress());
+                    restaurantName = findViewById(R.id.goooglggeee);
+                    restaurantName.setText(user[0].getRestaurant().getName());
+                    restaurantAddress = findViewById(R.id.address);
+                    restaurantAddress.setText(user[0].getRestaurant().getAddress());
+
+                });
+
+                Looper.loop();
             }
         };
         thread.start();
 
+
         aSwitch = findViewById(R.id.switcch);
         aSwitch.setOnClickListener(i -> {
-            if(aSwitch.isChecked()){
+            if (aSwitch.isChecked()) {
                 lin1.setVisibility(View.VISIBLE);
                 lin2.setVisibility(View.VISIBLE);
                 lin3.setVisibility(View.VISIBLE);
                 view.setVisibility(View.VISIBLE);
-            } else{
+            } else {
                 lin1.setVisibility(View.INVISIBLE);
                 lin2.setVisibility(View.INVISIBLE);
                 lin3.setVisibility(View.INVISIBLE);
@@ -122,7 +133,7 @@ public class ProfilePage extends AppCompatActivity {
         });
 
         save = findViewById(R.id.save);
-        save.setOnClickListener(i -> new Thread(()->{
+        save.setOnClickListener(i -> new Thread(() -> {
             user[0].setFirstName(firstName.getText().toString());
             user[0].setLastName(lastName.getText().toString());
             user[0].setEmail(email.getText().toString());
