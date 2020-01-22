@@ -37,6 +37,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.9.jre7'
     implementation 'com.google.android.material:material:1.2.0-alpha03'
+    // https://mvnrepository.com/artifact/org.apache.ibatis/ibatis-core
+    compile group: 'org.apache.ibatis', name: 'ibatis-core', version: '3.0'
+
 }
 
 configurations.all {
