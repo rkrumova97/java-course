@@ -112,7 +112,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
     }
 
     @Override
-    public void updateRestaurant(Restaurant restaurant, String changedAttribute, Object changeValue) {
+    public void updateRestaurant(Restaurant restaurant) {
         try {
 
             con = getConnection();
@@ -120,9 +120,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
             ps = con.prepareStatement("UPDATE restaurant " +
-                    " SET "+ changedAttribute + " = ? WHERE id = ? ");
-            ps.setObject(1, changeValue);
-            ps.setLong(2, restaurant.getId());
+                    " SET  (name, address) = (?,?) WHERE id = ? ");
+            ps.setString(1, restaurant.getName());
+            ps.setString(2,restaurant.getAddress());
+            ps.setLong(3, restaurant.getId());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {

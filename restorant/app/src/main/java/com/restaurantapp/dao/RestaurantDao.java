@@ -10,5 +10,5 @@ public interface RestaurantDao {
 
     public List<Restaurant> readAllRestaurant() throws Exception;
 
-    void updateRestaurant(Restaurant restaurant, String changedAttribute, Object changeValue);
+    void updateRestaurant(Restaurant restaurant);
 }

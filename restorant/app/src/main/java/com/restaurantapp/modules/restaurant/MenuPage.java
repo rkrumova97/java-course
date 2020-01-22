@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
+import com.restaurantapp.models.Order;
 
 public class MenuPage extends AppCompatActivity {
     BottomNavigationView profile;
@@ -46,11 +47,11 @@ public class MenuPage extends AppCompatActivity {
     }
 
     public void goToOrder(MenuItem item) {
-        startActivity(new Intent(this, ProfilePage.class));
+        startActivity(new Intent(this, OrderPage.class));
     }
 
     public void goToOffer(MenuItem item) {
-        startActivity(new Intent(this, ProfilePage.class));
+        startActivity(new Intent(this, MenuPage.class));
     }
 
 }
