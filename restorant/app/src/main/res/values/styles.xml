@@ -17,8 +17,4 @@
         <!-- default/unselected Checkbox color -->
         <item name="android:textColorSecondary">@android:color/darker_gray</item>
     </style>
-    <color name="color1">#424549</color>
-    <color name="color2">#7e455e</color>
-    <color name="color3">#796e25</color>
-    <color name="color4">#59717c</color>
 </resources>

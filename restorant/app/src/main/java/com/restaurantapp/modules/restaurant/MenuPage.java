@@ -2,10 +2,11 @@ package com.restaurantapp.modules.restaurant;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +14,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
+import com.restaurantapp.dao.OfferDao;
+import com.restaurantapp.dao.impl.OfferDaoImpl;
 import com.restaurantapp.models.Adapter;
 import com.restaurantapp.models.CardModel;
+import com.restaurantapp.models.Offer;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MenuPage extends AppCompatActivity {
     ViewPager viewPager;
@@ -26,6 +32,7 @@ public class MenuPage extends AppCompatActivity {
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     BottomNavigationView profile;
+    Button newoff;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -52,52 +59,90 @@ public class MenuPage extends AppCompatActivity {
         });
 
         models = new ArrayList<>();
-        models.add(new CardModel(R.drawable.ic_order, "Brochure","Brochure", "Brochure is an informative paper document (often also used for advertising) that can be folded into a template"));
-        models.add(new CardModel(R.drawable.ic_money, "Sticker","Sticker", "Sticker is a type of label: a piece of printed paper, plastic, vinyl, or other material with pressure sensitive adhesive on one side"));
-        models.add(new CardModel(R.drawable.ic_earth, "Poster","Poster", "Poster is any piece of printed paper designed to be attached to a wall or vertical surface."));
-        models.add(new CardModel(R.drawable.ic_offer, "Namecard","Namecard", "Business cards are cards bearing business information about a company or individual."));
+        final Class drawableClass = R.drawable.class;
+        final Field[] fields = drawableClass.getFields();
+        final Random rand = new Random();
+        int rndInt = rand.nextInt(fields.length);
+        final int[] resID = {0};
 
-        adapter = new Adapter(models, this);
-
-        viewPager = findViewById(R.id.viewPager);
-        viewPager.setAdapter(adapter);
-        viewPager.setPadding(130, 0, 130, 0);
-
-        colors = new Integer[]{
-                getResources().getColor(R.color.color1),
-                getResources().getColor(R.color.color2),
-                getResources().getColor(R.color.color3),
-                getResources().getColor(R.color.color4)
-        };
-
-        viewPager.addOnPageChangeListener (new ViewPager.OnPageChangeListener() {
+        Thread thread = new Thread() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void run() {
+                Looper.prepare();
+                try {
+                    resID[0] = fields[rndInt].getInt(drawableClass);
 
-                if (position < (adapter.getCount() - 1) && position < (colors.length - 1)) {
-                    viewPager.setBackgroundColor(
-
-                            (Integer) argbEvaluator.evaluate(
-                                    positionOffset,
-                                    colors[position],
-                                    colors[position + 1]
-                            )
-                    );
-                } else {
-                    viewPager.setBackgroundColor(colors[colors.length - 1]);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
+
+                OfferDao offerDao = new OfferDaoImpl();
+                List<Offer> offers = new ArrayList<>();
+                try {
+                    offers = offerDao.readAllOffer();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                List<Offer> finalOffers = offers;
+                runOnUiThread(() ->{
+                    int finalResID = resID[0];
+                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText())));
+
+                    adapter = new Adapter(models, MenuPage.this);
+
+                    viewPager = findViewById(R.id.viewPager);
+                    viewPager.setAdapter(adapter);
+                    viewPager.setPadding(130, 0, 130, 0);
+
+                    colors = new Integer[]{
+                            getResources().getColor(R.color.color1),
+                            getResources().getColor(R.color.color2),
+                            getResources().getColor(R.color.color3),
+                            getResources().getColor(R.color.color4),
+                            getResources().getColor(R.color.colorPrimary),
+                            getResources().getColor(R.color.colorPrimaryDark)
+                    };
+
+                    viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                            if (position < (adapter.getCount() - 1) && position < (colors.length - 1)) {
+                                viewPager.setBackgroundColor(
+
+                                        (Integer) argbEvaluator.evaluate(
+                                                positionOffset,
+                                                colors[position],
+                                                colors[position + 1]
+                                        )
+                                );
+                            } else {
+                                viewPager.setBackgroundColor(colors[colors.length - 1]);
+                            }
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+
+                        }
+                    });
+
+                });
+
+                Looper.loop();
             }
+        };
+        thread.start();
 
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+        newoff = findViewById(R.id.btnOrder);
+        newoff.setOnClickListener(i -> startActivity(new Intent(this, OfferPage.class)));
     }
 
     public void goToProfile(MenuItem item) {
