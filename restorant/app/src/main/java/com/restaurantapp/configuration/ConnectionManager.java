@@ -12,9 +12,9 @@ public class ConnectionManager {
         try {
 
             final String db_driver = "org.postgresql.Driver";
-            final String url = "jdbc:postgresql://10.0.2.2:5433/restaurant";
+            final String url = "jdbc:postgresql://10.0.2.2:5432/restaurant";
             final String user = "postgres";
-            final String password = "postgres";
+            final String password = "Erasmusstud1";
             Class.forName(db_driver); //Driver loading
 
             Connection con = DriverManager.getConnection(url, user, password);

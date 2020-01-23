@@ -225,15 +225,15 @@ public class UserDaoImpl implements UserDao {
                 String username = rs.getString("username");
                 Long restaurantId = rs.getLong("restaurant");
                 String token = rs.getString("token");
-                Restaurant restaurant = restaurantDao.readRestaurant(restaurantId);
-                List<Category> categories = getCategories(id);
+                //Restaurant restaurant = restaurantDao.readRestaurant(restaurantId);
+                //List<Category> categories = getCategories(id);
 
                 users.add(User.builder()
                         .id(id)
                         .firstName(firstName)
                         .address(address)
-                        .categories(categories)
-                        .restaurant(restaurant)
+                        //.categories(categories)
+                        //.restaurant(restaurant)
                         .lastName(lastName)
                         .email(email)
                         .password(password)

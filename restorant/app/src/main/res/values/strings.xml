@@ -24,4 +24,11 @@
     <string name="save">Save changes</string>
     <string name="saved">Succesfully saved!</string>
     <string name="add_new_offer">Add new offer</string>
+    <string name="about_yummy">About Yummy</string>
+    <string name="food_story">Yummy was created to make sure delicious food will not be wasted.</string>
+    <string name="abu_pizza">Delicious food</string>
+    <string name="money_story">You will save money by eating tasty cooked meals, savory bakery products, fruits and veggies.</string>
+    <string name="abu_piggybank">Saved money</string>
+    <string name="planet_story">Together we can fight the climate change and give our planet a happy bright future!</string>
+    <string name="abu_planet">Happy Planet</string>
 </resources>

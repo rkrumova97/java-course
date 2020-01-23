@@ -20,7 +20,7 @@ import com.restaurantapp.dao.UserDao;
 import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.Role;
 import com.restaurantapp.models.User;
-import com.restaurantapp.modules.client.Activity_Story;
+import com.restaurantapp.modules.client.Activity_AboutUs;
 import com.restaurantapp.modules.restaurant.HomePage;
 
 import java.util.List;
@@ -85,7 +85,7 @@ public class Activity_Login extends AppCompatActivity {
                         editor.putString(Email, us);
                         editor.apply();
 
-                        Intent intent = new Intent(Activity_Login.this, Activity_Story.class);
+                        Intent intent = new Intent(Activity_Login.this, Activity_AboutUs.class);
                         startActivity(intent);
                     }
                 } else {
