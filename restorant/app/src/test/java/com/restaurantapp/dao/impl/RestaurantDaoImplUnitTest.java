@@ -26,7 +26,7 @@ public class RestaurantDaoImplUnitTest {
                 .address("")
                 .name("Rest")
                 .build();
-        restaurantDao.updateRestaurant(restaurant, "address", "Rest");
+        restaurantDao.updateRestaurant(restaurant);
         assert restaurantDao.readRestaurant(1L).getAddress().equals("Rest");
 
     }

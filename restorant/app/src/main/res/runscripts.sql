@@ -1,27 +1,13 @@
-DROP DATABASE IF EXISTS restaurant;
-DROP TABLE IF EXISTS category, order, "user", offer,restaurant_category, restaurant, user_category;
-CREATE DATABASE restaurant  IF NOT EXISTS
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Bulgarian_Bulgaria.1251'
-    LC_CTYPE = 'Bulgarian_Bulgaria.1251'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
 
-CREATE TABLE public.category IF NOT EXISTS
+DROP TABLE IF EXISTS category, public.order, public.user, offer,restaurant_category, restaurant, user_category;
+
+
+CREATE TABLE category IF NOT EXISTS
 (
     id bigint NOT NULL,
     category character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT restaurant_pkey PRIMARY KEY (id)
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.category
-    OWNER to postgres;
+);
 
 CREATE TABLE public.offer  IF NOT EXISTS
 (

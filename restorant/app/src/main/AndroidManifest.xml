@@ -12,9 +12,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApp"
+        android:theme="@style/Theme.MyApp.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".modules.client.Activity_HomePage_Client"></activity>
+        <activity android:name=".modules.client.Activity_Orders"></activity>
+        <activity android:name=".modules.client.Activity_More" />
+        <activity android:name=".modules.client.Activity_ContactUs" />
+        <activity android:name=".modules.client.Activity_Profile" />
+        <activity android:name=".modules.client.Activity_HomePage_Client" />
         <activity android:name=".Activity_Registration" />
         <activity android:name=".modules.restaurant.MenuPage" />
         <activity android:name=".modules.restaurant.OrderPage" />
