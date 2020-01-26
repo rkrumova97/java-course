@@ -22,7 +22,7 @@
     <string name="restaurant_name">Restaurant name</string>
     <string name="restaurant_address">Restaurant address</string>
     <string name="save">Save changes</string>
-    <string name="saved">Succesfully saved!</string>
+    <string name="saved">Successfully saved!</string>
     <string name="add_new_offer">Add new offer</string>
     <string name="title">Title</string>
     <string name="text">Text</string>
@@ -34,4 +34,23 @@
     <string name="planet_story">Together we can fight the climate change and give our planet a happy bright future!</string>
     <string name="abu_planet">Happy Planet</string>
     <string name="chip">Choose categories</string>
+    <string name="backery_image_card">backery image</string>
+    <string name="the_demo_bakery">The Demo Bakery</string>
+    <string name="go_grab_it">Grab your goodies between 17:00 and 19:00 !</string>
+    <string name="_5">5€</string>
+    <string name="email_user">hudsonioana.denes@gmail.com</string>
+    <string name="email_status">Email</string>
+    <string name="nickname">Username</string>
+    <string name="username_client">Hudson</string>
+    <string name="name_client">Name</string>
+    <string name="name_user">Ioana Denes</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="profile_account">Profile</string>
+    <string name="contact_us">Any issue? Contact us!</string>
+    <string name="phone_image">Phone image</string>
+    <string name="button_to_abu">Se how you can impact on the world!</string>
+    <string name="to_my_profile_button"><![CDATA[My Profile > > >]]></string>
+    <string name="to_my_orders_button"><![CDATA[My orders > > >]]></string>
+    <string name="to_contact_us_button"><![CDATA[Contact us > > >]]></string>
+    <string name="my_phonenbr">0040754539786</string>
 </resources>

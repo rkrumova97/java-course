@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modules.client.Activity_ContactUs"
+    android:background="@drawable/grad_bg">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tv_cu"
+        android:src="@drawable/ic_phone"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/phone_image" />
+
+    <TextView
+        android:id="@+id/tv_cu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/contact_us"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:fontFamily="@font/indie_flower"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/my_phonenbr"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"/>
+
+</RelativeLayout>

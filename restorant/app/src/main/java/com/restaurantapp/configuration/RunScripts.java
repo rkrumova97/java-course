@@ -12,8 +12,8 @@ public class RunScripts {
         //Registering the Driver
         DriverManager.registerDriver(new org.postgresql.Driver());
         //Getting the connection
-        String mysqlUrl = "jdbc:postgresql://127.0.0.1:5433/project";
-        Connection con = DriverManager.getConnection(mysqlUrl, "postgres", "postgres");
+        String mysqlUrl = "jdbc:postgresql://127.0.0.1:5432/restaurant";
+        Connection con = DriverManager.getConnection(mysqlUrl, "postgres", "Erasmusstud1");
         System.out.println("Connection established......");
         //Initialize the script runner
         ScriptRunner sr = new ScriptRunner(con);

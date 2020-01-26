@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
+        android:layout_margin="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F0E3FF">
+
+            <ImageView
+                android:id="@+id/image_bakery"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_croissant"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/backery_image_card" />
+
+            <TextView
+                android:id="@+id/title_offer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_bakery"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"
+                android:text="@string/the_demo_bakery"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/ore_bakery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title_offer1"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/go_grab_it"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ore_bakery"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/_5"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp"/>
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

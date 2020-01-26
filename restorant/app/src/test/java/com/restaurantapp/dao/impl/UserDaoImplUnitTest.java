@@ -26,7 +26,7 @@ public class UserDaoImplUnitTest {
                 .lastName("")
                 .firstName("")
                 .address("")
-                .restaurant(new Restaurant(1L, "", "", new ArrayList<Category>()))
+                .restaurant(new Restaurant(1L, "", "", new ArrayList<>()))
                 .build();
         UserDao userDao = new UserDaoImpl();
         User user = userDao.createUser(user1);
@@ -53,7 +53,7 @@ public class UserDaoImplUnitTest {
                 .id(1L)
                 .address("")
                 .build();
-        userDao.updateUser(user, "address", "Rest");
+        userDao.updateUser(user);
         assert userDao.readUser(1L).getAddress().equals("Rest");
 
     }
