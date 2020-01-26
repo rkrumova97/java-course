@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
-import com.restaurantapp.models.Offer;
-import com.restaurantapp.models.Order;
 
 public class OrderPage extends AppCompatActivity {
     BottomNavigationView profile;
@@ -24,7 +22,7 @@ public class OrderPage extends AppCompatActivity {
 
         profile = findViewById(R.id.bottom_navigation);
         profile.setOnNavigationItemSelectedListener(i -> {
-            switch (i.getItemId()){
+            switch (i.getItemId()) {
                 case R.id.user:
                     goToProfile(i);
                     return true;

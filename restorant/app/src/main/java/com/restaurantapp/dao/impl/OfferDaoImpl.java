@@ -32,13 +32,12 @@ public class OfferDaoImpl implements OfferDao {
             con = getConnection();
             //TODO make the id autoincrement
             ps = Objects.requireNonNull(con)
-                    .prepareStatement("INSERT INTO offer (text, category, price, restaurant, id) VALUES(?, ?, ?, ?, ?)");
+                    .prepareStatement("INSERT INTO offer (text, category, price, restaurant) VALUES(?, ?, ?, ?)");
 
             ps.setString(1, offer.getText());
             ps.setLong(2, offer.getCategory().getId());
             ps.setLong(3, offer.getPrice());
             ps.setLong(4, offer.getRestaurant().getId());
-            ps.setLong(5, offer.getId());
 
             ps.executeUpdate();
 
@@ -153,7 +152,7 @@ public class OfferDaoImpl implements OfferDao {
     }
 
     @Override
-    public void updateOffer(Offer offer, String changedAttribute, Object changeValue) {
+    public void updateOffer(Offer offer) {
         try {
 
             con = getConnection();
@@ -161,9 +160,11 @@ public class OfferDaoImpl implements OfferDao {
             //STEP 4: Execute a query
             System.out.println("Creating statement...");
             ps = con.prepareStatement("UPDATE offer " +
-                    "SET " + changedAttribute + " = ? WHERE id = ?");
-            ps.setObject(1, changeValue);
-            ps.setObject(2, offer.getId());
+                    "SET (title,  text, price, category) = (?,?,?,?) WHERE id = ?");
+            ps.setString(1, offer.getTitle());
+            ps.setString(2, offer.getText());
+            ps.setLong(3, offer.getPrice());
+            ps.setString(4, offer.getCategory().getCategory());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="apptour">
+        <item>@drawable/ic_order</item>
+        <item>@drawable/ic_pizza</item>
+        <item>@drawable/ic_offer</item>
+        <item>@drawable/ic_money</item>
+        <item>@drawable/ic_earth</item>
+    </array>
+</resources>

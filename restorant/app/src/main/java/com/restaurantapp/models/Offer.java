@@ -19,4 +19,7 @@ public class Offer {
     private Category category;
 
     private Restaurant restaurant;
+
+    private String title;
+
 }

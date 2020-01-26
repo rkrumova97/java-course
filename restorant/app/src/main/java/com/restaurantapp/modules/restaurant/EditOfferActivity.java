@@ -34,7 +34,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
-public class OfferPage extends AppCompatActivity {
+public class EditOfferActivity extends AppCompatActivity {
     BottomNavigationView profile;
     Button save;
     EditText price;
@@ -76,21 +76,30 @@ public class OfferPage extends AppCompatActivity {
         title = findViewById(R.id.title);
         save = findViewById(R.id.save_offer);
         AtomicReference<List<Category>> categories = new AtomicReference<>();
+        //TODO
+        Offer offer = new Offer();
         new Thread(() -> {
             try {
                 categories.set(categoryDao.readAllCategories());
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            try {
+                offerDao.readOffer(offer.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             runOnUiThread(() -> {
                         ArrayList<String> catNames = (ArrayList<String>) categories.get().stream().map(Category::getCategory).collect(Collectors.toList());
                         setCategoryChips(catNames);
+                        price.setText(String.valueOf(offer.getPrice()));
+                        text.setText(offer.getText());
+                        title.setText(offer.getTitle());
                     }
             );
         }).start();
 
 
-        Offer offer = new Offer();
         save.setOnClickListener(i -> new Thread(() -> {
             SharedPreferences preferences = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             String emailKey = preferences.getString("emailKey", "");
@@ -110,7 +119,7 @@ public class OfferPage extends AppCompatActivity {
             Optional<Category> category = categories.get().stream().filter(j -> j.getCategory().equals(this.category)).findFirst();
             offer.setCategory(category.get());
             try {
-                offerDao.createOffer(offer);
+                offerDao.updateOffer(offer);
             } catch (Exception e) {
                 e.printStackTrace();
             }

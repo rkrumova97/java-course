@@ -11,7 +11,7 @@ public interface OfferDao {
 
     public List<Offer> readAllOffer() throws Exception;
 
-    void updateOffer(Offer offer, String changedAttribute, Object changeValue);
+    void updateOffer(Offer offer);
 
     public void deleteOffer(Long id);
 }

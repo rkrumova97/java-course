@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.restaurantapp.R;
+import com.restaurantapp.modules.restaurant.EditOfferActivity;
 import com.restaurantapp.modules.restaurant.OfferPage;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class Adapter extends PagerAdapter {
         desc.setText(models.get(position).getDesc());
 
         view.setOnClickListener(v -> {
-            Intent intent = new Intent(context, OfferPage.class);
+            Intent intent = new Intent(context, EditOfferActivity.class);
             intent.putExtra("param", models.get(position).getTitle());
             context.startActivity(intent);
             // finish();
