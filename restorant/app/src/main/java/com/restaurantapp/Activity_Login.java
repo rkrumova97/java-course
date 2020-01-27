@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +19,7 @@ import com.restaurantapp.dao.UserDao;
 import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.Role;
 import com.restaurantapp.models.User;
-import com.restaurantapp.modules.client.Activity_AboutUs;
+import com.restaurantapp.modules.client.Activity_Welcome;
 import com.restaurantapp.modules.restaurant.HomePage;
 
 import java.util.List;
@@ -77,7 +76,7 @@ public class Activity_Login extends AppCompatActivity {
                         editor.putString(Email, us);
                         editor.apply();
 
-                        Intent intent = new Intent(Activity_Login.this, HomePage.class);
+                        Intent intent = new Intent(Activity_Login.this, Activity_Welcome.class);
                         startActivity(intent);
                     } else if(collect.get(0).getRole().equals(Role.CLIENT)){
                         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -85,7 +84,7 @@ public class Activity_Login extends AppCompatActivity {
                         editor.putString(Email, us);
                         editor.apply();
 
-                        Intent intent = new Intent(Activity_Login.this, Activity_AboutUs.class);
+                        Intent intent = new Intent(Activity_Login.this, Activity_Welcome.class);
                         startActivity(intent);
                     }
                 } else {

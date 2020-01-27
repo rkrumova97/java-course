@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/grad_bg"
-    tools:context="com.restaurantapp.modules.client.Activity_AboutUs">
+    tools:context="com.restaurantapp.modules.client.Activity_AboutUs"
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
         android:id="@+id/tv_abu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
         android:text="@string/about_yummy"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
@@ -27,7 +29,8 @@
         android:layout_below="@+id/tv_abu"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
+        android:layout_marginRight="30dp"
+        android:layout_centerInParent="true">
 
         <LinearLayout
             android:id="@+id/lin.lay.abu.1"

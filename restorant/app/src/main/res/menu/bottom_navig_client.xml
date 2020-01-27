@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:title="Discover"
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_accountprofile"
+        android:title="Profile"
         app:showAsAction="ifRoom|withText"/>
 
     <item
         android:id="@+id/nav_store"
         android:icon="@drawable/ic_store"
-        android:title="Market"
+        android:title="Orders"
         app:showAsAction="ifRoom|withText"/>
 
     <item

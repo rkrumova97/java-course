@@ -9,13 +9,13 @@ import android.widget.Button;
 
 import com.restaurantapp.R;
 
-public class Activity_More extends AppCompatActivity {
+public class Activity_Welcome extends AppCompatActivity {
     private Button b1, b2, b3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__more);
+        setContentView(R.layout.activity__welcome);
 
         b1 = (Button) findViewById(R.id.b1);
         b1.setOnClickListener(new View.OnClickListener() {

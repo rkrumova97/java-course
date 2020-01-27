@@ -36,7 +36,7 @@
     <string name="chip">Choose categories</string>
     <string name="backery_image_card">backery image</string>
     <string name="the_demo_bakery">The Demo Bakery</string>
-    <string name="go_grab_it">Grab your goodies between 17:00 and 19:00 !</string>
+    <string name="go_grab_it">Grab these goodies between 17:00 and 19:00 !</string>
     <string name="_5">5€</string>
     <string name="email_user">hudsonioana.denes@gmail.com</string>
     <string name="email_status">Email</string>
@@ -53,4 +53,5 @@
     <string name="to_my_orders_button"><![CDATA[My orders > > >]]></string>
     <string name="to_contact_us_button"><![CDATA[Contact us > > >]]></string>
     <string name="my_phonenbr">0040754539786</string>
+    <string name="type_of_service">type of service</string>
 </resources>

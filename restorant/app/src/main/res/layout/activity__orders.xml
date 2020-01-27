@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modules.client.Activity_Orders">
+    tools:context="com.restaurantapp.modules.client.Activity_Orders"
+    android:background="@drawable/grad_bg"
+    android:id="@+id/discover">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation_client">
+
+        <TextView
+            android:id="@+id/recommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recommended for you"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/indie_flower"
+            android:textStyle="bold"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager_recommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recommended"
+            android:foregroundGravity="center"
+            android:layout_alignParentTop="true"
+            android:overScrollMode="never"
+            android:clipToPadding="false">
+
+            <Button
+                android:id="@+id/button_see"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="@font/indie_flower"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
+                android:text="@string/button_to_abu"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </androidx.viewpager.widget.ViewPager>
+
+        <TextView
+            android:id="@+id/favourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPager_recommended"
+            android:text="Your favourites"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/indie_flower"
+            android:textStyle="bold"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager_yourfavs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recommended"
+            android:foregroundGravity="center"
+            android:overScrollMode="never"
+            android:clipToPadding="false"/>
+
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_client"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#BE9FE1"
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="@color/colorPrimaryDark"
+        app:menu="@menu/bottom_navig_client" />
+
+</RelativeLayout>
