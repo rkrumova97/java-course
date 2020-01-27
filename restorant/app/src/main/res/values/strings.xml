@@ -54,4 +54,5 @@
     <string name="to_contact_us_button"><![CDATA[Contact us > > >]]></string>
     <string name="my_phonenbr">0040754539786</string>
     <string name="error">Something went wrong!</string>
+    <string name="list">List of orders</string>
 </resources>

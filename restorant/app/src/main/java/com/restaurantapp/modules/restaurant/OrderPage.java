@@ -3,13 +3,29 @@ package com.restaurantapp.modules.restaurant;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
+import com.restaurantapp.dao.OrderDao;
+import com.restaurantapp.dao.impl.OrderDaoImpl;
+import com.restaurantapp.models.Adapter;
+import com.restaurantapp.models.ListAdapter;
+import com.restaurantapp.models.ListModel;
+import com.restaurantapp.models.Order;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderPage extends AppCompatActivity {
     BottomNavigationView profile;
@@ -20,6 +36,7 @@ public class OrderPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_page_r);
 
+        OrderDao orderDao = new OrderDaoImpl();
         profile = findViewById(R.id.bottom_navigation);
         profile.setOnNavigationItemSelectedListener(i -> {
             switch (i.getItemId()) {
@@ -35,8 +52,28 @@ public class OrderPage extends AppCompatActivity {
                 default:
                     return super.onOptionsItemSelected(i);
             }
-
         });
+
+
+        new Thread(() -> {
+            List<Order> orderList = new ArrayList<>();
+            List<ListModel> models = new ArrayList<>();
+            try {
+                orderList = orderDao.readAllOrder();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            List<Order> finalOrderList = orderList;
+            runOnUiThread(() -> {
+                ListView listView = findViewById(R.id.listView);
+                finalOrderList.forEach(i -> models.add(new ListModel(i.getUser().getFirstName(), i.getUser().getLastName(), i.getOffer().getTitle(), i.getLocalDateTime().toString())));
+                ListAdapter listAdapter = new
+                        ListAdapter(models, this);
+                listView.setAdapter(listAdapter);
+            });
+        }).start();
+
     }
 
     public void goToProfile(MenuItem item) {
