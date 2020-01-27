@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">Yummy</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="forgot_password">Forgot Password?</string>
@@ -54,4 +54,6 @@
     <string name="to_contact_us_button"><![CDATA[Contact us > > >]]></string>
     <string name="my_phonenbr">0040754539786</string>
     <string name="type_of_service">type of service</string>
+    <string name="error">Something went wrong!</string>
+    <string name="list">List of orders</string>
 </resources>

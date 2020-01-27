@@ -13,7 +13,6 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.restaurantapp.R;
 import com.restaurantapp.modules.restaurant.EditOfferActivity;
-import com.restaurantapp.modules.restaurant.OfferPage;
 
 import java.util.List;
 
@@ -57,6 +56,8 @@ public class Adapter extends PagerAdapter {
         view.setOnClickListener(v -> {
             Intent intent = new Intent(context, EditOfferActivity.class);
             intent.putExtra("param", models.get(position).getTitle());
+            intent.putExtra("offer", String.valueOf(models.get(position).getOffer().getId()));
+
             context.startActivity(intent);
             // finish();
         });
@@ -67,7 +68,7 @@ public class Adapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View)object);
+        container.removeView((View) object);
     }
 
 }

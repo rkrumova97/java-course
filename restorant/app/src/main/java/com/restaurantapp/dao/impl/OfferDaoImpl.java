@@ -164,7 +164,8 @@ public class OfferDaoImpl implements OfferDao {
             ps.setString(1, offer.getTitle());
             ps.setString(2, offer.getText());
             ps.setLong(3, offer.getPrice());
-            ps.setString(4, offer.getCategory().getCategory());
+            ps.setLong(4, offer.getCategory().getId());
+            ps.setLong(5, offer.getId());
             ps.executeUpdate();
             ps.close();
         } catch (Exception se) {

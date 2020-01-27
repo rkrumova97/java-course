@@ -30,6 +30,7 @@ import com.restaurantapp.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -48,7 +49,8 @@ public class EditOfferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_offer);
-
+        Long offerIdId = Long.parseLong(Objects.requireNonNull(getIntent().getStringExtra("offer")));
+        final Offer[] offer = {new Offer()};
         chipsPrograms = findViewById(R.id.chipsPrograms);
         profile = findViewById(R.id.bottom_navigation);
         profile.setOnNavigationItemSelectedListener(i -> {
@@ -77,24 +79,25 @@ public class EditOfferActivity extends AppCompatActivity {
         save = findViewById(R.id.save_offer);
         AtomicReference<List<Category>> categories = new AtomicReference<>();
         //TODO
-        Offer offer = new Offer();
+
         new Thread(() -> {
+
             try {
                 categories.set(categoryDao.readAllCategories());
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                offerDao.readOffer(offer.getId());
+                 offer[0] = offerDao.readOffer(offerIdId);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             runOnUiThread(() -> {
                         ArrayList<String> catNames = (ArrayList<String>) categories.get().stream().map(Category::getCategory).collect(Collectors.toList());
                         setCategoryChips(catNames);
-                        price.setText(String.valueOf(offer.getPrice()));
-                        text.setText(offer.getText());
-                        title.setText(offer.getTitle());
+                        price.setText(String.valueOf(offer[0].getPrice()));
+                        text.setText(offer[0].getText());
+                        title.setText(offer[0].getTitle());
                     }
             );
         }).start();
@@ -111,20 +114,24 @@ public class EditOfferActivity extends AppCompatActivity {
             }
 
 
-            offer.setPrice(Long.parseLong(price.getText().toString()));
-            offer.setText(text.getText().toString());
-            offer.setTitle(title.getText().toString());
-            offer.setRestaurant(user[0].getRestaurant());
+            offer[0].setPrice(Long.parseLong(price.getText().toString()));
+            offer[0].setText(text.getText().toString());
+            offer[0].setTitle(title.getText().toString());
+            offer[0].setRestaurant(user[0].getRestaurant());
 
             Optional<Category> category = categories.get().stream().filter(j -> j.getCategory().equals(this.category)).findFirst();
-            offer.setCategory(category.get());
+            offer[0].setCategory(category.get());
             try {
-                offerDao.updateOffer(offer);
+                offerDao.updateOffer(offer[0]);
+                Snackbar.make(profile, R.string.saved, Snackbar.LENGTH_SHORT)
+                        .show();
+                startActivity(new Intent(this, MenuPage.class));
             } catch (Exception e) {
                 e.printStackTrace();
+                Snackbar.make(profile, R.string.error, Snackbar.LENGTH_SHORT)
+                        .show();
+
             }
-            Snackbar.make(profile, R.string.saved, Snackbar.LENGTH_SHORT)
-                    .show();
         }).start());
     }
 

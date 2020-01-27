@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardModel {
-    private int image;
-    private String title;
-    private String text;
-    private String desc;
-    private Offer offer;
+public class ListModel {
+    private String firstName;
+    private String lastName;
+    private String offer;
+    private String time;
 }
