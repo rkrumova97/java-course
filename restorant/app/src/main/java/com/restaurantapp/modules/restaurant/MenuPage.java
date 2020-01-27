@@ -88,7 +88,7 @@ public class MenuPage extends AppCompatActivity {
                 List<Offer> finalOffers = offers;
                 runOnUiThread(() ->{
                     int finalResID = resID[0];
-                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText())));
+                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getTitle(), i.getPrice().toString(), i.getText(), i)));
 
                     adapter = new Adapter(models, MenuPage.this);
 

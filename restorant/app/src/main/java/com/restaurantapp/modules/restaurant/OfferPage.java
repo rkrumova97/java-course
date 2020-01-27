@@ -101,7 +101,6 @@ public class OfferPage extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
             offer.setPrice(Long.parseLong(price.getText().toString()));
             offer.setText(text.getText().toString());
             offer.setTitle(title.getText().toString());
@@ -111,11 +110,16 @@ public class OfferPage extends AppCompatActivity {
             offer.setCategory(category.get());
             try {
                 offerDao.createOffer(offer);
+                Snackbar.make(profile, R.string.saved, Snackbar.LENGTH_SHORT)
+                        .show();
+                startActivity(new Intent(this, MenuPage.class));
+
             } catch (Exception e) {
                 e.printStackTrace();
+                Snackbar.make(profile, R.string.error, Snackbar.LENGTH_SHORT)
+                        .show();
+
             }
-            Snackbar.make(profile, R.string.saved, Snackbar.LENGTH_SHORT)
-                    .show();
         }).start());
     }
 

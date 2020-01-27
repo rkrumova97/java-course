@@ -17,29 +17,14 @@ public class Activity_More extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__more);
 
-        b1 = (Button) findViewById(R.id.b1);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity_Profile();
-            }
-        });
+        b1 = findViewById(R.id.b1);
+        b1.setOnClickListener(v -> openActivity_Profile());
 
-        b2 = (Button) findViewById(R.id.b2);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity_Orders();
-            }
-        });
+        b2 = findViewById(R.id.b2);
+        b2.setOnClickListener(v -> openActivity_Orders());
 
-        b3 = (Button) findViewById(R.id.b3);
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity_ContactUs();
-            }
-        });
+        b3 = findViewById(R.id.b3);
+        b3.setOnClickListener(v -> openActivity_ContactUs());
     }
 
     public void openActivity_Profile() {
