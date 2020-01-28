@@ -158,6 +158,7 @@
             android:textColor="#70416D" />
 
         <Button
+            android:id="@+id/b3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

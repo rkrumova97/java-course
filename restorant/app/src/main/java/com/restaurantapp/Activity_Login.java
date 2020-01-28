@@ -31,7 +31,7 @@ public class Activity_Login extends AppCompatActivity {
     LinearLayout linearLayout;
     RelativeLayout relativeLayout;
 
-    Button b1, b2;
+    Button b1, b2, b3;
 
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Email = "emailKey";
@@ -101,5 +101,10 @@ public class Activity_Login extends AppCompatActivity {
         b2 = findViewById(R.id.register);
         b2.setOnClickListener(v ->
                 startActivity(new Intent(this, Activity_Registration.class)));
+
+        b3 = findViewById(R.id.b3);
+        b3.setOnClickListener(v ->
+                startActivity(new Intent(this, Activity_PasswordForgotten.class)));
+
     }
 }

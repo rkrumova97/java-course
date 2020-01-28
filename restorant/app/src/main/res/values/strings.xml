@@ -77,4 +77,7 @@
     <string name="imgearth">earth</string>
     <string name="you_are">You are :</string>
     <string name="bla_bla">Bla Bla</string>
+    <string name="let_s_get_it_started">Let\'s get it started!</string>
+    <string name="what_was_the_email_address">What was the Email Address?</string>
+    <string name="send_me_a_verification_email">Send me a verification email</string>
 </resources>

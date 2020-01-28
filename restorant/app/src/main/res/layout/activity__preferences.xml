@@ -63,8 +63,8 @@
                     <CheckBox
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:padding="5dp"
+                        android:layout_margin="1dp"
+                        android:padding="1dp"
                         android:text="Meat lover"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
@@ -74,8 +74,8 @@
                     <CheckBox
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:padding="5dp"
+                        android:layout_margin="1dp"
+                        android:padding="1dp"
                         android:text="Vegan"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
@@ -85,8 +85,8 @@
                     <CheckBox
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:padding="5dp"
+                        android:layout_margin="1dp"
+                        android:padding="1dp"
                         android:text="Vegetarian"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
@@ -207,12 +207,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/btn_bg"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/indie_flower"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="Let's get it started!"
+                android:text="@string/let_s_get_it_started"
                 android:textAllCaps="false"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="#70416D"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
         </RelativeLayout>
