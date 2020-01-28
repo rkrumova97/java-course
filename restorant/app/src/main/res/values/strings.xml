@@ -45,15 +45,21 @@
     <string name="name_client">Name</string>
     <string name="name_user">Ioana Denes</string>
     <string name="profile_picture">profile picture</string>
-    <string name="profile_account">Profile</string>
+    <string name="profile_account">Your Profile</string>
     <string name="contact_us">Any issue? Contact us!</string>
     <string name="phone_image">Phone image</string>
-    <string name="button_to_abu">Se how you can impact on the world!</string>
-    <string name="to_my_profile_button"><![CDATA[My Profile > > >]]></string>
-    <string name="to_my_orders_button"><![CDATA[My orders > > >]]></string>
-    <string name="to_contact_us_button"><![CDATA[Contact us > > >]]></string>
+    <string name="button_save_order">Get it!</string>
+    <string name="to_my_profile_button"><![CDATA[Go to your profile]]></string>
+    <string name="to_offers_button"><![CDATA[See the available offers!]]></string>
+    <string name="to_more_button"><![CDATA[More]]></string>
     <string name="my_phonenbr">0040754539786</string>
     <string name="type_of_service">type of service</string>
     <string name="error">Something went wrong!</string>
     <string name="list">List of orders</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="profile">Profile</string>
+    <string name="orders">Orders</string>
+    <string name="more">More</string>
+    <string name="button_to_abu">See how you can impact on the world!</string>
+    <string name="contact_us_more">Contact us</string>
 </resources>

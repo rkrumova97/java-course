@@ -14,9 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".modules.client.Activity_Market"></activity>
-        <activity android:name=".modules.client.Activity_HomePage_Client"/>
-        <activity android:name=".modules.client.Activity_Orders"/>
+        <activity android:name=".modules.client.Activity_More"></activity>
+        <activity android:name=".modules.client.Activity_Market" />
+        <activity android:name=".modules.client.Activity_HomePage_Client" />
+        <activity android:name=".modules.client.Activity_Orders" />
         <activity android:name=".modules.client.Activity_Welcome" />
         <activity android:name=".modules.client.Activity_ContactUs" />
         <activity android:name=".modules.client.Activity_Profile" />

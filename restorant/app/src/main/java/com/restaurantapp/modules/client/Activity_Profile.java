@@ -2,11 +2,11 @@ package com.restaurantapp.modules.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -15,9 +15,6 @@ import com.restaurantapp.R;
 import com.restaurantapp.dao.UserDao;
 import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.User;
-import com.restaurantapp.modules.restaurant.MenuPage;
-import com.restaurantapp.modules.restaurant.OrderPage;
-import com.restaurantapp.modules.restaurant.ProfilePage;
 
 public class Activity_Profile extends AppCompatActivity {
 
@@ -57,6 +54,7 @@ public class Activity_Profile extends AppCompatActivity {
         String emailKey = preferences.getString("emailKey", "");
         final User[] user = {new User()};
         Thread thread = new Thread() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void run() {
                 try {
@@ -70,7 +68,7 @@ public class Activity_Profile extends AppCompatActivity {
                     username.setText(user[0].getUsername());
                     email.setText(user[0].getEmail());
                 });
-            };
+            }
 
         };
         thread.start();
@@ -85,7 +83,7 @@ public class Activity_Profile extends AppCompatActivity {
     }
 
     public void goToMore(MenuItem item) {
-        startActivity(new Intent(this, Activity_ContactUs.class));
+        startActivity(new Intent(this, Activity_More.class));
     }
 
 }

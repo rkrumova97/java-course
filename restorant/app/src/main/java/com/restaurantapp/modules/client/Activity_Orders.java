@@ -49,7 +49,7 @@ public class Activity_Orders extends AppCompatActivity {
                 case R.id.discover:
                     goToDiscover(i);
                     return true;
-                case R.id.more:
+                case R.id.nav_more:
                     goToMore(i);
                     return true;
                 default:
@@ -88,7 +88,7 @@ public class Activity_Orders extends AppCompatActivity {
                 List<Offer> finalOffers = offers;
                 runOnUiThread(() ->{
                     int finalResID = resID[0];
-                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText())));
+                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText(),i)));
 
                     adapter = new Adapter(models, Activity_Orders.this);
 
