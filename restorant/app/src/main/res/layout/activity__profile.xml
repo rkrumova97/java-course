@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".modules.client.Activity_Profile"
-    android:background="#E0FFCD">
+    android:background="@drawable/grad_bg">
 
     <RelativeLayout
         android:id="@+id/rel.lay.profile.1"
@@ -36,7 +36,7 @@
             android:layout_below="@+id/img_user"
             android:layout_centerHorizontal="true"
             android:text="@string/profile_account"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textColor="#70416D"
             android:fontFamily="@font/indie_flower"
             android:textStyle="bold"/>
@@ -164,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FFCAB0"
+        android:background="#F4A9C7"
         app:itemIconTint="#010101"
         app:itemTextColor="#010101"
         app:menu="@menu/bottom_navig_client" />
