@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class Activity_Login extends AppCompatActivity {
 
     LinearLayout linearLayout;
-        RelativeLayout relativeLayout;
+    RelativeLayout relativeLayout;
 
     Button b1, b2;
 

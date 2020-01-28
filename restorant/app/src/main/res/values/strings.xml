@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Yummy</string>
     <string name="password">Password</string>
-    <string name="username">Username</string>
+    <string name="email_login">Email</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="join_us_now">Join us Now</string>
     <string name="login_now">Login Now</string>
@@ -62,7 +62,19 @@
     <string name="more">More</string>
     <string name="button_to_abu">See how you can impact on the world!</string>
     <string name="contact_us_more">Contact us</string>
+    <string name="registration">Registration</string>
+    <string name="full_name">Full Name</string>
+    <string name="telephone_number">Telephone Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="let_s_set_your_preferences">Let\'s set your preferences!</string>
+    <string name="savedmoney">savedmoney</string>
     <string name="Order">See what\'s in it for you today!</string>
     <string name="logout">Logout</string>
     <string name="offer">offer</string>
+    <string name="user_name">Username</string>
+    <string name="username">Username</string>
+    <string name="your_preferences">Your preferences</string>
+    <string name="imgearth">earth</string>
+    <string name="you_are">You are :</string>
+    <string name="bla_bla">Bla Bla</string>
 </resources>

@@ -32,12 +32,13 @@ public class OfferDaoImpl implements OfferDao {
             con = getConnection();
             //TODO make the id autoincrement
             ps = Objects.requireNonNull(con)
-                    .prepareStatement("INSERT INTO offer (text, category, price, restaurant) VALUES(?, ?, ?, ?)");
+                    .prepareStatement("INSERT INTO offer (text, category, price, restaurant, title) VALUES(?, ?, ?, ?, ?)");
 
             ps.setString(1, offer.getText());
             ps.setLong(2, offer.getCategory().getId());
             ps.setLong(3, offer.getPrice());
             ps.setLong(4, offer.getRestaurant().getId());
+            ps.setString(5, offer.getTitle());
 
             ps.executeUpdate();
 
@@ -116,6 +117,7 @@ public class OfferDaoImpl implements OfferDao {
             //STEP 5: Extract data from result set
             while (rs.next()) {
                 Long price = rs.getLong("price");
+                String title = rs.getString("title");
                 Long id = rs.getLong("id");
                 String text = rs.getString("text");
                 Long restaurantId = rs.getLong("restaurant");
@@ -127,6 +129,7 @@ public class OfferDaoImpl implements OfferDao {
                         .id(id)
                         .price(price)
                         .restaurant(restaurant)
+                        .title(title)
                         .category(category)
                         .text(text).build());
             }
