@@ -1,7 +1,9 @@
 package com.restaurantapp.modules.restaurant;
 
 import android.animation.ArgbEvaluator;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
 import com.restaurantapp.dao.OfferDao;
 import com.restaurantapp.dao.impl.OfferDaoImpl;
@@ -52,6 +55,9 @@ public class MenuPage extends AppCompatActivity {
                 case R.id.order:
                     goToOrder(i);
                     return true;
+                case R.id.logout:
+                    logout();
+                    return true;
                 default:
                     return super.onOptionsItemSelected(i);
             }
@@ -86,9 +92,9 @@ public class MenuPage extends AppCompatActivity {
                 }
 
                 List<Offer> finalOffers = offers;
-                runOnUiThread(() ->{
+                runOnUiThread(() -> {
                     int finalResID = resID[0];
-                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getTitle(), i.getPrice().toString(), i.getText(), i)));
+                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getTitle(), i.getPrice().toString(), i.getText(), i, null)));
 
                     adapter = new Adapter(models, MenuPage.this);
 
@@ -155,6 +161,14 @@ public class MenuPage extends AppCompatActivity {
 
     public void goToOffer(MenuItem item) {
         startActivity(new Intent(this, MenuPage.class));
+    }
+
+    public void logout() {
+        SharedPreferences sharedpreferences = getSharedPreferences(Activity_Login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+        startActivity(new Intent(this, Activity_Login.class));
     }
 
 }

@@ -13,4 +13,5 @@ public class CardModel {
     private String text;
     private String desc;
     private Offer offer;
+    private User user;
 }

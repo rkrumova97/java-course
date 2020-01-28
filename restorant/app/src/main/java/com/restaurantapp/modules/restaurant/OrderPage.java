@@ -1,25 +1,21 @@
 package com.restaurantapp.modules.restaurant;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
 import com.restaurantapp.dao.OrderDao;
 import com.restaurantapp.dao.impl.OrderDaoImpl;
-import com.restaurantapp.models.Adapter;
 import com.restaurantapp.models.ListAdapter;
 import com.restaurantapp.models.ListModel;
 import com.restaurantapp.models.Order;
@@ -48,6 +44,9 @@ public class OrderPage extends AppCompatActivity {
                     return true;
                 case R.id.order:
                     goToOrder(i);
+                    return true;
+                case R.id.logout:
+                    logout();
                     return true;
                 default:
                     return super.onOptionsItemSelected(i);
@@ -86,6 +85,14 @@ public class OrderPage extends AppCompatActivity {
 
     public void goToOffer(MenuItem item) {
         startActivity(new Intent(this, MenuPage.class));
+    }
+
+    public  void logout(){
+        SharedPreferences sharedpreferences = getSharedPreferences(Activity_Login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+        startActivity(new Intent(this, Activity_Login.class));
     }
 
 }

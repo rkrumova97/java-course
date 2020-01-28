@@ -3,52 +3,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/discover"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.restaurantapp.modules.client.Activity_Orders"
     android:background="@drawable/grad_bg"
-    android:id="@+id/discover">
+    tools:context="com.restaurantapp.modules.client.Activity_Orders">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation_client">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/recommended"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="See what's in it for you today!"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"
             android:fontFamily="@font/indie_flower"
-            android:textStyle="bold"/>
+            android:text="@string/Order"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager_recommended"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/recommended"
+            android:clipToPadding="false"
             android:foregroundGravity="center"
-            android:overScrollMode="never"
-            android:clipToPadding="false">
-        </androidx.viewpager.widget.ViewPager>
-
-        <Button
-            android:id="@+id/button_see"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="@drawable/btn_bg"
-            android:fontFamily="@font/indie_flower"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
-            android:text="@string/button_save_order"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-
+            android:overScrollMode="never"/>
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

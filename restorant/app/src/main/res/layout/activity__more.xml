@@ -41,6 +41,19 @@
         android:textStyle="bold"
         android:fontFamily="@font/indie_flower"/>
 
+        <Button
+        android:id="@+id/logout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:drawableBottom="@drawable/ic_accountprofile"
+        android:text="@string/logout"
+        android:textColor="#70416D"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/indie_flower"/>
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

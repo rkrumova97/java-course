@@ -3,12 +3,15 @@ package com.restaurantapp.modules.client;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
 
 @SuppressLint("Registered")
@@ -26,6 +29,9 @@ public class Activity_More extends AppCompatActivity {
 
         Button b2 = findViewById(R.id.b2_more);
         b2.setOnClickListener(v -> openActivity_ContactUs());
+
+        Button b3 = findViewById(R.id.logout1);
+        b3.setOnClickListener(v -> logout());
 
 
         more = findViewById(R.id.bottom_navigation_client);
@@ -67,5 +73,14 @@ public class Activity_More extends AppCompatActivity {
         public void goToMore(MenuItem item) {
             startActivity(new Intent(this, Activity_More.class));
         }
+
+    public  void logout(){
+        SharedPreferences sharedpreferences = getSharedPreferences(Activity_Login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+        startActivity(new Intent(this, Activity_Login.class));
+    }
+
 }
 

@@ -76,7 +76,7 @@ public class Activity_Login extends AppCompatActivity {
                         editor.putString(Email, us);
                         editor.apply();
 
-                        Intent intent = new Intent(Activity_Login.this, Activity_Welcome.class);
+                        Intent intent = new Intent(Activity_Login.this, HomePage.class);
                         startActivity(intent);
                     } else if(collect.get(0).getRole().equals(Role.CLIENT)){
                         SharedPreferences.Editor editor = sharedpreferences.edit();

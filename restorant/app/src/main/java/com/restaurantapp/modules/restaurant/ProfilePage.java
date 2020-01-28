@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
 import com.restaurantapp.dao.RestaurantDao;
 import com.restaurantapp.dao.UserDao;
@@ -63,6 +64,9 @@ public class ProfilePage extends AppCompatActivity {
                     return true;
                 case R.id.order:
                     goToOrder(i);
+                    return true;
+                case R.id.logout:
+                    logout();
                     return true;
                 default:
                     return super.onOptionsItemSelected(i);
@@ -160,5 +164,11 @@ public class ProfilePage extends AppCompatActivity {
         startActivity(new Intent(this, MenuPage.class));
     }
 
-
+    public  void logout(){
+        SharedPreferences sharedpreferences = getSharedPreferences(Activity_Login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+        startActivity(new Intent(this, Activity_Login.class));
+    }
 }

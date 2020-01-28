@@ -41,7 +41,7 @@ public class OfferDaoImpl implements OfferDao {
 
             ps.executeUpdate();
 
-            offer.setId(ObjectMapper.getGeneratedId(con));
+            offer.setId(ObjectMapper.getGeneratedIdOffers(con));
 
         } catch (Exception e) {
             e.printStackTrace();

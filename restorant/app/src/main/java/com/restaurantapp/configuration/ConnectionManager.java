@@ -1,7 +1,5 @@
 package com.restaurantapp.configuration;
 
-import android.os.StrictMode;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -12,9 +10,9 @@ public class ConnectionManager {
         try {
 
             final String db_driver = "org.postgresql.Driver";
-            final String url = "jdbc:postgresql://10.0.2.2:5432/restaurant";
+            final String url = "jdbc:postgresql://10.0.2.2:5433/restaurant";
             final String user = "postgres";
-            final String password = "Erasmusstud1";
+            final String password = "postgres";
             Class.forName(db_driver); //Driver loading
 
             Connection con = DriverManager.getConnection(url, user, password);

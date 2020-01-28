@@ -6,11 +6,15 @@
         android:icon="@drawable/ic_action_name"
         app:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/offer"
-        android:title="@string/user"
+        android:title="@string/offer"
         android:icon="@drawable/ic_offer"
         app:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/order"
-        android:title="@string/user"
+        android:title="@string/orders"
         android:icon="@drawable/ic_order"
+        app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/logout"
+        android:title="@string/logout"
+        android:icon="@drawable/ic_face"
         app:showAsAction="ifRoom|withText"/>
 </menu>

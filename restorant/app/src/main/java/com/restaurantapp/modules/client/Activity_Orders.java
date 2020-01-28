@@ -1,41 +1,43 @@
 package com.restaurantapp.modules.client;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.restaurantapp.dao.OfferDao;
-import com.restaurantapp.dao.impl.OfferDaoImpl;
-import com.restaurantapp.models.Adapter;
-import com.restaurantapp.models.CardModel;
-
 import android.animation.ArgbEvaluator;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.restaurantapp.R;
+import com.restaurantapp.dao.OfferDao;
+import com.restaurantapp.dao.UserDao;
+import com.restaurantapp.dao.impl.OfferDaoImpl;
+import com.restaurantapp.dao.impl.UserDaoImpl;
+import com.restaurantapp.models.CardModel;
+import com.restaurantapp.models.Offer;
+import com.restaurantapp.models.OrderAdapter;
+import com.restaurantapp.models.User;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
-import com.restaurantapp.R;
-import com.restaurantapp.models.Offer;
-import com.restaurantapp.modules.restaurant.OfferPage;
-
 public class Activity_Orders extends AppCompatActivity {
 
     ViewPager viewPager;
-    Adapter adapter;
+    OrderAdapter adapter;
     List<CardModel> models;
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     BottomNavigationView profile;
-    Button newoff;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -65,10 +67,22 @@ public class Activity_Orders extends AppCompatActivity {
         int rndInt = rand.nextInt(fields.length);
         final int[] resID = {0};
 
+        SharedPreferences preferences = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String emailKey = preferences.getString("emailKey", "");
+
         Thread thread = new Thread() {
             @Override
             public void run() {
                 Looper.prepare();
+
+                User user = new User();
+                try {
+                    UserDao userDao = new UserDaoImpl();
+                    user = userDao.readUser(emailKey);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 try {
                     resID[0] = fields[rndInt].getInt(drawableClass);
 
@@ -86,11 +100,12 @@ public class Activity_Orders extends AppCompatActivity {
                 }
 
                 List<Offer> finalOffers = offers;
-                runOnUiThread(() ->{
+                User finalUser = user;
+                runOnUiThread(() -> {
                     int finalResID = resID[0];
-                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText(),i)));
+                    finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText(), i, finalUser)));
 
-                    adapter = new Adapter(models, Activity_Orders.this);
+                    adapter = new OrderAdapter(models, Activity_Orders.this);
 
                     viewPager = findViewById(R.id.viewPager_recommended);
                     viewPager.setAdapter(adapter);
@@ -104,8 +119,7 @@ public class Activity_Orders extends AppCompatActivity {
                             getResources().getColor(R.color.colorPrimary),
                             getResources().getColor(R.color.colorPrimaryDark)
                     };
-                    newoff = findViewById(R.id.button_see);
-                    newoff.setOnClickListener(i -> startActivity(new Intent(Activity_Orders.this, OfferPage.class)));
+
                     viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                         @Override
                         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

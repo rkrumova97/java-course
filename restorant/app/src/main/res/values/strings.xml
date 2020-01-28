@@ -62,4 +62,7 @@
     <string name="more">More</string>
     <string name="button_to_abu">See how you can impact on the world!</string>
     <string name="contact_us_more">Contact us</string>
+    <string name="Order">See what\'s in it for you today!</string>
+    <string name="logout">Logout</string>
+    <string name="offer">offer</string>
 </resources>

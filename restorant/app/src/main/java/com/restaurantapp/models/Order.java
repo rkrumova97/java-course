@@ -19,5 +19,5 @@ public class Order {
 
     private Offer offer;
 
-    private ZonedDateTime localDateTime;
+    private LocalDateTime localDateTime;
 }

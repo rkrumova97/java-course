@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -40,12 +41,12 @@ public class OrderDaoImpl implements OrderDao {
         try {
             con = getConnection();
             ps = Objects.requireNonNull(con)
-                    .prepareStatement("INSERT INTO public.order ( offer, person, id) VALUES( ?, ?, ?)");
+                    .prepareStatement("INSERT INTO public.order ( offer, person, time) VALUES( ?, ?, ?)");
 
           //  ps.setTimestamp(1, Timestamp.valueOf(order.getLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss[.xxxxx]"))));
             ps.setLong(1, order.getOffer().getId());
             ps.setLong(2, order.getUser().getId());
-            ps.setLong(3, order.getId());
+            ps.setTimestamp(3,  new Timestamp(((order.getLocalDateTime()).atZone( ZoneId.systemDefault()).toInstant().toEpochMilli())));
 
             ps.executeUpdate();
 
@@ -84,7 +85,7 @@ public class OrderDaoImpl implements OrderDao {
 
                 order = Order.builder()
                         .id(id)
-                        .localDateTime(ZonedDateTime.now())
+                        .localDateTime(LocalDateTime.now())
                         .offer(offer)
                         .user(user)
                         .build();
@@ -134,7 +135,7 @@ public class OrderDaoImpl implements OrderDao {
 
                 orders.add(Order.builder()
                         .id(id)
-                        .localDateTime(ZonedDateTime.now())
+                        .localDateTime(LocalDateTime.now())
                         .offer(offer)
                         .user(user)
                         .build());
