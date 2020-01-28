@@ -83,6 +83,7 @@ public class Activity_Profile extends AppCompatActivity {
     }
 
     public void goToMore(MenuItem item) {
+
         startActivity(new Intent(this, Activity_More.class));
     }
 

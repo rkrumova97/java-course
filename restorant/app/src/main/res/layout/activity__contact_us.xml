@@ -11,6 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/tv_cu"
+        android:layout_marginTop="30dp"
         android:src="@drawable/ic_phone"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
@@ -21,10 +22,10 @@
         android:id="@+id/tv_cu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/contact_us"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp"
+        android:textColor="#70416D"
+        android:textSize="35sp"
         android:fontFamily="@font/indie_flower"
         android:textStyle="bold"
         android:textAlignment="center" />
@@ -36,6 +37,7 @@
         android:layout_centerInParent="true"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="#70416D"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

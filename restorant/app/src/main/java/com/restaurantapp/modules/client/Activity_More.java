@@ -2,6 +2,7 @@ package com.restaurantapp.modules.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
 
+@SuppressLint("Registered")
 public class Activity_More extends AppCompatActivity {
 
     BottomNavigationView more;
@@ -44,17 +46,17 @@ public class Activity_More extends AppCompatActivity {
         });
     }
 
-    private void openActivity_ContactUs() {
-        Intent intent = new Intent(this, Activity_ContactUs.class);
-        startActivity(intent);
-    }
+        private void openActivity_ContactUs() {
+            Intent intent = new Intent(this, Activity_ContactUs.class);
+            startActivity(intent);
+        }
 
-    private void openActivity_AboutUs() {
-        Intent intent = new Intent(this, Activity_AboutUs.class);
-        startActivity(intent);
-    }
+        private void openActivity_AboutUs() {
+            Intent intent = new Intent(this, Activity_AboutUs.class);
+            startActivity(intent);
+        }
 
-    public void goToProfile(MenuItem item) {
+        public void goToProfile(MenuItem item) {
             startActivity(new Intent(this, Activity_Profile.class));
         }
 
@@ -65,6 +67,5 @@ public class Activity_More extends AppCompatActivity {
         public void goToMore(MenuItem item) {
             startActivity(new Intent(this, Activity_More.class));
         }
-
-    }
+}
 

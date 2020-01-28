@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".modules.client.Activity_More"
-    android:background="#E0FFCD">
+    android:background="@drawable/grad_bg">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
@@ -19,11 +19,12 @@
         android:id="@+id/b1_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFEBBB"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:drawableBottom="@drawable/ic_face"
         android:text="@string/button_to_abu"
         android:textColor="#70416D"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:fontFamily="@font/indie_flower"/>
 
@@ -31,12 +32,12 @@
         android:id="@+id/b2_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#DEC8ED"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:drawableBottom="@drawable/ic_contactus"
         android:text="@string/contact_us_more"
         android:textColor="#70416D"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:fontFamily="@font/indie_flower"/>
 
@@ -47,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FFCAB0"
+        android:background="#F4A9C7"
         app:itemIconTint="#010101"
         app:itemTextColor="#010101"
         app:menu="@menu/bottom_navig_client" />
