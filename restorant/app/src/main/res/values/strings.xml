@@ -80,4 +80,13 @@
     <string name="let_s_get_it_started">Let\'s get it started!</string>
     <string name="what_was_the_email_address">What was the Email Address?</string>
     <string name="send_me_a_verification_email">Send me a verification email</string>
+    <string name="meat_lover">Meat lover</string>
+    <string name="vegan">Vegan</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="gluten_free">Gluten free</string>
+    <string name="lactose_free">Lactose free</string>
+    <string name="you_are_interested_in">You are interested in :</string>
+    <string name="cooked_meals">Cooked meals</string>
+    <string name="fruits_vegetables">Fruits Vegetables</string>
+    <string name="bakery">Bakery</string>
 </resources>

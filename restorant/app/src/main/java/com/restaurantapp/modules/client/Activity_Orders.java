@@ -48,8 +48,11 @@ public class Activity_Orders extends AppCompatActivity {
         profile = findViewById(R.id.bottom_navigation_client);
         profile.setOnNavigationItemSelectedListener(i -> {
             switch (i.getItemId()) {
-                case R.id.discover:
-                    goToDiscover(i);
+                case R.id.nav_profile:
+                    goToProfile(i);
+                    return true;
+                case R.id.nav_store:
+                    goToOrders(i);
                     return true;
                 case R.id.nav_more:
                     goToMore(i);
@@ -160,12 +163,16 @@ public class Activity_Orders extends AppCompatActivity {
 
     }
 
-    public void goToDiscover(MenuItem item) {
+    public void goToProfile (MenuItem item) {
+        startActivity(new Intent(this, Activity_Profile.class));
+    }
+
+    public void goToOrders(MenuItem item) {
         startActivity(new Intent(this, Activity_Orders.class));
     }
 
     public void goToMore(MenuItem item) {
-        startActivity(new Intent(this, Activity_Welcome.class));
+        startActivity(new Intent(this, Activity_More.class));
     }
 
 }

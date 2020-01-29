@@ -17,11 +17,12 @@
             android:id="@+id/recommended"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:gravity="center"
             android:fontFamily="@font/indie_flower"
             android:text="@string/Order"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
+            android:textColor="#70416D"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <androidx.viewpager.widget.ViewPager
@@ -32,6 +33,7 @@
             android:clipToPadding="false"
             android:foregroundGravity="center"
             android:overScrollMode="never"/>
+
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -39,9 +41,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#BE9FE1"
-        app:itemIconTint="@color/colorPrimaryDark"
-        app:itemTextColor="@color/colorPrimaryDark"
+        android:background="#F4A9C7"
+        app:itemIconTint="#010101"
+        app:itemTextColor="#010101"
         app:menu="@menu/bottom_navig_client" />
 
 </RelativeLayout>
