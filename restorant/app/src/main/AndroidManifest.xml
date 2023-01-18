@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.restaurantapp">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,15 +12,15 @@
         android:roundIcon="@mipmap/ic_salad_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp.NoActionBar"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".modules.client.Activity_More"></activity>
-        <activity android:name=".modules.client.Activity_Market" />
-        <activity android:name=".modules.client.Activity_HomePage_Client" />
+        tools:ignore="GoogleAppIndexingWarning"
+        android:dataExtractionRules="@xml/data_extraction_rules">
+        <activity android:name=".modules.client.Activity_More" />
+<!--        <activity android:name=".modules.client.Activity_Market" />-->
+<!--        <activity android:name=".modules.client.Activity_HomePage_Client" />-->
         <activity android:name=".modules.client.Activity_Orders" />
         <activity android:name=".modules.client.Activity_Welcome" />
         <activity android:name=".modules.client.Activity_ContactUs" />
         <activity android:name=".modules.client.Activity_Profile" />
-        <activity android:name=".modules.client.Activity_Orders" />
         <activity android:name=".Activity_Registration" />
         <activity android:name=".modules.restaurant.MenuPage" />
         <activity android:name=".modules.restaurant.EditOfferActivity" />
@@ -31,7 +30,8 @@
         <activity android:name=".modules.restaurant.ProfilePage" />
         <activity android:name=".modules.client.Activity_AboutUs" />
         <activity android:name=".Activity_Preferences" />
-        <activity android:name=".Activity_Login">
+        <activity android:name=".Activity_Login"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

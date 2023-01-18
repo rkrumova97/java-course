@@ -1,7 +1,6 @@
 package com.restaurantapp.dao.impl;
 
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.models.Category;
 import com.restaurantapp.models.Restaurant;
 import com.restaurantapp.models.Role;
 import com.restaurantapp.models.User;
@@ -14,7 +13,7 @@ import java.util.List;
 public class UserDaoImplUnitTest {
     @Test
     public void createUser_isCorrect() throws Exception {
-        User user1 = User.builder()
+        User user1 = new User()
                 .id(3L)
                 .password("something")
                 .username("anything")
@@ -26,8 +25,7 @@ public class UserDaoImplUnitTest {
                 .lastName("")
                 .firstName("")
                 .address("")
-                .restaurant(new Restaurant(1L, "", "", new ArrayList<>()))
-                .build();
+                .restaurant(new Restaurant(1L, "", "", new ArrayList<>()));
         UserDao userDao = new UserDaoImpl();
         User user = userDao.createUser(user1);
         assert user.getPassword().equals(user1.getPassword());
@@ -49,10 +47,9 @@ public class UserDaoImplUnitTest {
     @Test
     public void update_isCorrect() throws Exception {
         UserDao userDao = new UserDaoImpl();
-        User user = User.builder()
+        User user = new User()
                 .id(1L)
-                .address("")
-                .build();
+                .address("");
         userDao.updateUser(user);
         assert userDao.readUser(1L).getAddress().equals("Rest");
 

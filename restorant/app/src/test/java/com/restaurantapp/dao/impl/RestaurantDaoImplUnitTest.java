@@ -21,11 +21,10 @@ public class RestaurantDaoImplUnitTest {
     @Test
     public void update_isCorrect() throws Exception {
         RestaurantDao restaurantDao = new RestaurantDaoImpl();
-        Restaurant restaurant = Restaurant.builder()
+        Restaurant restaurant = new Restaurant()
                 .id(1L)
                 .address("")
-                .name("Rest")
-                .build();
+                .name("Rest");
         restaurantDao.updateRestaurant(restaurant);
         assert restaurantDao.readRestaurant(1L).getAddress().equals("Rest");
 

@@ -1,5 +1,7 @@
 package com.restaurantapp.dao.impl;
 
+import static com.restaurantapp.configuration.ConnectionManager.getConnection;
+
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -21,13 +23,9 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static com.restaurantapp.configuration.ConnectionManager.getConnection;
 
 public class OrderDaoImpl implements OrderDao {
     private Connection con;
@@ -83,12 +81,11 @@ public class OrderDaoImpl implements OrderDao {
                 Long userId = rs.getLong("person");
                 User user = userDao.readUser(userId);
 
-                order = Order.builder()
+                order = new Order()
                         .id(id)
                         .localDateTime(LocalDateTime.now())
                         .offer(offer)
-                        .user(user)
-                        .build();
+                        .user(user);
             }
             rs.close();
         } catch (Exception se) {
@@ -133,12 +130,12 @@ public class OrderDaoImpl implements OrderDao {
                 Long userId = rs.getLong("person");
                 User user = userDao.readUser(userId);
 
-                orders.add(Order.builder()
+                orders.add(new Order()
                         .id(id)
                         .localDateTime(LocalDateTime.now())
                         .offer(offer)
                         .user(user)
-                        .build());
+                        );
             }
             rs.close();
         } catch (Exception se) {

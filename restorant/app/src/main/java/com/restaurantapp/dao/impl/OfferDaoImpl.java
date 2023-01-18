@@ -1,5 +1,7 @@
 package com.restaurantapp.dao.impl;
 
+import static com.restaurantapp.configuration.ConnectionManager.getConnection;
+
 import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.CategoryDao;
 import com.restaurantapp.dao.OfferDao;
@@ -17,8 +19,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static com.restaurantapp.configuration.ConnectionManager.getConnection;
 
 public class OfferDaoImpl implements OfferDao {
     private Connection con;
@@ -74,12 +74,12 @@ public class OfferDaoImpl implements OfferDao {
                 Long categoryId = rs.getLong("category");
                 Category category = categoryDao.readCategory(categoryId);
 
-                offer = Offer.builder()
+                offer = new Offer()
                         .id(id)
                         .price(price)
                         .restaurant(restaurant)
                         .category(category)
-                        .text(text).build();
+                        .text(text);
             }
             rs.close();
         } catch (Exception se) {
@@ -88,8 +88,10 @@ public class OfferDaoImpl implements OfferDao {
         finally {
             //finally block used to close resources
             try {
-                if (ps != null)
+                if (ps != null) {
+                    assert con != null;
                     con.close();
+                }
             } catch (SQLException ignored) {
             }// do nothing
             try {
@@ -125,13 +127,13 @@ public class OfferDaoImpl implements OfferDao {
                 Long categoryId = rs.getLong("category");
                 Category category = categoryDao.readCategory(categoryId);
 
-                offers.add(Offer.builder()
+                offers.add(new Offer()
                         .id(id)
                         .price(price)
                         .restaurant(restaurant)
                         .title(title)
                         .category(category)
-                        .text(text).build());
+                        .text(text));
             }
             rs.close();
         } catch (Exception se) {

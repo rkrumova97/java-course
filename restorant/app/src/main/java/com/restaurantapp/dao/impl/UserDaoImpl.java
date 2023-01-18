@@ -1,5 +1,7 @@
 package com.restaurantapp.dao.impl;
 
+import static com.restaurantapp.configuration.ConnectionManager.getConnection;
+
 import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.CategoryDao;
 import com.restaurantapp.dao.RestaurantDao;
@@ -18,8 +20,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static com.restaurantapp.configuration.ConnectionManager.getConnection;
 
 public class UserDaoImpl implements UserDao {
     private Connection con;
@@ -99,7 +99,7 @@ public class UserDaoImpl implements UserDao {
                 Restaurant restaurant = restaurantDao.readRestaurant(restaurantId);
                 List<Category> categories = getCategories(id);
 
-                user = User.builder()
+                user = new User()
                         .id(id)
                         .firstName(firstName)
                         .address(address)
@@ -111,8 +111,7 @@ public class UserDaoImpl implements UserDao {
                         .phoneNumber(phoneNumber)
                         .role(role)
                         .username(username)
-                        .token(token)
-                        .build();
+                        .token(token);
             }
             rs.close();
         } catch (Exception se) {
@@ -163,7 +162,7 @@ public class UserDaoImpl implements UserDao {
                 Restaurant restaurant = restaurantDao.readRestaurant(restaurantId);
                 List<Category> categories = getCategories(id);
 
-                user = User.builder()
+                user = new User()
                         .id(id)
                         .firstName(firstName)
                         .address(address)
@@ -175,8 +174,7 @@ public class UserDaoImpl implements UserDao {
                         .phoneNumber(phoneNumber)
                         .role(role)
                         .username(username)
-                        .token(token)
-                        .build();
+                        .token(token);
             }
             rs.close();
         } catch (Exception se) {
@@ -228,7 +226,7 @@ public class UserDaoImpl implements UserDao {
                 //Restaurant restaurant = restaurantDao.readRestaurant(restaurantId);
                 //List<Category> categories = getCategories(id);
 
-                users.add(User.builder()
+                users.add(new User()
                         .id(id)
                         .firstName(firstName)
                         .address(address)
@@ -240,8 +238,7 @@ public class UserDaoImpl implements UserDao {
                         .phoneNumber(phoneNumber)
                         .role(role)
                         .username(username)
-                        .token(token)
-                        .build());
+                        .token(token));
 
             }
             rs.close();

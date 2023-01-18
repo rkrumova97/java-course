@@ -12,19 +12,17 @@ import java.util.List;
 public class OfferDaoImplUnitTest {
     @Test
     public void createOffer_isCorrect() throws Exception {
-        Restaurant restaurant = Restaurant.builder()
+        Restaurant restaurant = new Restaurant()
                 .id(3L)
                 .address("")
-                .name("Rest")
-                .build();
+                .name("Rest");
         Category category = new Category(1L, "something");
-        Offer offer = Offer.builder()
+        Offer offer = new Offer()
                 .id(2L)
                 .restaurant(restaurant)
                 .price(10L)
                 .category(category)
-                .text("dsfdsds")
-                .build();
+                .text("dsfdsds");
         OfferDao offerDao = new OfferDaoImpl();
         Offer offer1 = offerDao.createOffer(offer);
         assert offer1.getPrice().equals(offer.getPrice());
@@ -46,21 +44,19 @@ public class OfferDaoImplUnitTest {
     @Test
     public void update_isCorrect() throws Exception {
         OfferDao offerDao = new OfferDaoImpl();
-        Restaurant restaurant = Restaurant.builder()
+        Restaurant restaurant = new Restaurant()
                 .id(1L)
                 .address("")
-                .name("Rest")
-                .build();
+                .name("Rest");
         Category category = new Category(1L, "something");
-        Offer offer = Offer.builder()
+        Offer offer = new Offer()
                 .id(1L)
                 .restaurant(restaurant)
                 .price(10L)
                 .category(category)
-                .text("wqwq")
-                .build();
+                .text("wqwq");
 
-        offerDao.updateOffer(offer, "text", "wqwq");
+        offerDao.updateOffer(offer);
         assert offerDao.readOffer(1L).getText().equals("wqwq");
 
     }

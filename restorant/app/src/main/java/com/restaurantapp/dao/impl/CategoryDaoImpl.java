@@ -76,7 +76,7 @@ public class CategoryDaoImpl implements CategoryDao {
                 Long id = rs.getLong("id");
                 String text = rs.getString("category");
 
-                categories.add(Category.builder().id(id).category(text).build());
+                categories.add(new Category().id(id).category(text));
             }
             rs.close();
         } catch (Exception se) {

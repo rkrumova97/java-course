@@ -38,11 +38,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
                 String name = rs.getString("name");
                 String address = rs.getString("address");
 
-                restaurant = Restaurant.builder()
+                restaurant = new Restaurant()
                         .id(id)
                         .name(name)
-                        .address(address)
-                        .build();
+                        .address(address);
             }
             rs.close();
         } catch (Exception se) {
@@ -83,12 +82,11 @@ public class RestaurantDaoImpl implements RestaurantDao {
                 String address = rs.getString("address");
                 List<Category> categories = getCategories(id);
 
-                restaurants.add(Restaurant.builder()
+                restaurants.add(new Restaurant()
                         .id(id)
                         .address(address)
                         .name(name)
-                        .categories(categories)
-                        .build());
+                        .categories(categories));
             }
             rs.close();
         } catch (Exception se) {
