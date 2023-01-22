@@ -1,17 +1,22 @@
 package com.restaurantapp.dao;
 
-import com.restaurantapp.models.*;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+
+import com.restaurantapp.models.Offer;
 
 import java.util.List;
 
+@Dao
 public interface OfferDao {
-    public Offer createOffer(Offer offer) throws Exception;
+    @Insert
+    void createOffer(Offer offer) throws Exception;
 
-    public Offer readOffer(Long id) throws Exception;
+    @Query("SELECT * FROM offer where offer.id = :id")
+    Offer readOffer(Long id) throws Exception;
 
-    public List<Offer> readAllOffer() throws Exception;
+    @Query("SELECT * FROM offer")
+    List<Offer> readAllOffer() throws Exception;
 
-    void updateOffer(Offer offer);
-
-    public void deleteOffer(Long id);
 }

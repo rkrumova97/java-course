@@ -3,19 +3,17 @@ package com.restaurantapp.modules.restaurant;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
-import com.restaurantapp.dao.OrderDao;
-import com.restaurantapp.dao.impl.OrderDaoImpl;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.models.ListAdapter;
 import com.restaurantapp.models.ListModel;
 import com.restaurantapp.models.Order;
@@ -26,13 +24,17 @@ import java.util.List;
 public class OrderPage extends AppCompatActivity {
     BottomNavigationView profile;
 
+    private ConnectionManager connectionManager;
+
+    public OrderPage(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
+
     @Override
-    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_page_r);
 
-        OrderDao orderDao = new OrderDaoImpl();
         profile = findViewById(R.id.bottom_navigation);
         profile.setOnNavigationItemSelectedListener(i -> {
             switch (i.getItemId()) {
@@ -58,7 +60,7 @@ public class OrderPage extends AppCompatActivity {
             List<Order> orderList = new ArrayList<>();
             List<ListModel> models = new ArrayList<>();
             try {
-                orderList = orderDao.readAllOrder();
+                orderList = connectionManager.orderDao().readAllOrder();
             } catch (Exception e) {
                 e.printStackTrace();
             }

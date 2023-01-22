@@ -1,26 +1,29 @@
 package com.restaurantapp.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.time.LocalDateTime;
 
+@Entity
+@TypeConverters(OrderConverter.class)
 public class Order {
+    @PrimaryKey
     private Long id;
 
+    @ColumnInfo(name = "user_id")
     private User user;
 
+    @ColumnInfo(name = "offer_id")
     private Offer offer;
 
+    @ColumnInfo
     private LocalDateTime localDateTime;
 
     public Order() {
     }
-
-    public Order(Long id, User user, Offer offer, LocalDateTime localDateTime) {
-        this.id = id;
-        this.user = user;
-        this.offer = offer;
-        this.localDateTime = localDateTime;
-    }
-
     public Long getId() {
         return id;
     }

@@ -3,11 +3,8 @@ package com.restaurantapp.modules.restaurant;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,18 +12,16 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.RestaurantDao;
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.dao.impl.RestaurantDaoImpl;
-import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.Restaurant;
 import com.restaurantapp.models.User;
 
@@ -46,13 +41,18 @@ public class ProfilePage extends AppCompatActivity {
     UserDao userDao;
     RestaurantDao restaurantDao;
 
+    private ConnectionManager connectionManager;
+
+    public ProfilePage(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
+
     @Override
-    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_page_r);
-        restaurantDao = new RestaurantDaoImpl();
-        userDao = new UserDaoImpl();
+        restaurantDao = connectionManager.restaurantDao();
+        userDao = connectionManager.userDao();
         profile = findViewById(R.id.bottom_navigation);
         profile.setOnNavigationItemSelectedListener(i -> {
             switch (i.getItemId()) {
@@ -145,7 +145,11 @@ public class ProfilePage extends AppCompatActivity {
             restaurant.setName(restaurantName.getText().toString());
             restaurant.setAddress(restaurantAddress.getText().toString());
             restaurantDao.updateRestaurant(restaurant);
-            userDao.updateUser(user[0]);
+            try {
+                userDao.createUser(user[0]);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
             Snackbar.make(profile, R.string.saved, Snackbar.LENGTH_SHORT)
                     .show();

@@ -3,7 +3,6 @@ package com.restaurantapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,12 +10,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.Role;
 import com.restaurantapp.models.User;
 import com.restaurantapp.modules.client.Activity_Welcome;
@@ -37,17 +36,13 @@ public class Activity_Login extends AppCompatActivity {
     public static final String Email = "emailKey";
     public static final String Password = "passwordKey";
     SharedPreferences sharedpreferences;
+    ConnectionManager connectionManager;
 
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            relativeLayout.setVisibility(View.VISIBLE);
-        }
-    };
-
+    public Activity_Login(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
 
     @Override
-    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -61,7 +56,7 @@ public class Activity_Login extends AppCompatActivity {
         b1 = findViewById(R.id.login);
         b1.setOnClickListener(v -> new Thread(() -> {
             try {
-                UserDao userDao = new UserDaoImpl();
+                UserDao userDao = connectionManager.userDao();
                 List<User> userList = userDao.readAllUser();
                 EditText password = findViewById(R.id.password);
                 EditText username = findViewById(R.id.username);

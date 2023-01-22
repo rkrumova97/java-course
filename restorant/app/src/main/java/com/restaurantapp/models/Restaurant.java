@@ -1,26 +1,29 @@
 package com.restaurantapp.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.util.List;
 
+@Entity
+@TypeConverters(RestaurantConverter.class)
 public class Restaurant {
+    @PrimaryKey
     private Long id;
 
+    @ColumnInfo
     private String name;
 
+    @ColumnInfo
     private String address;
 
+    @ColumnInfo
     private List<Category> categories;
 
     public Restaurant() {
     }
-
-    public Restaurant(Long id, String name, String address, List<Category> categories) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.categories = categories;
-    }
-
     public Long getId() {
         return id;
     }

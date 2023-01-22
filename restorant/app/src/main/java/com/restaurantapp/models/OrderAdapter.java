@@ -14,21 +14,22 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.OrderDao;
-import com.restaurantapp.dao.impl.OrderDaoImpl;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 public class OrderAdapter extends PagerAdapter {
 
-    private List<CardModel> models;
-    private Context context;
+    private final List<CardModel> models;
+    private final Context context;
+    private final ConnectionManager connectionManager;
 
-    public OrderAdapter(List<CardModel> models, Context context) {
+    public OrderAdapter(List<CardModel> models, Context context, ConnectionManager connectionManager) {
         this.models = models;
         this.context = context;
+        this.connectionManager = connectionManager;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class OrderAdapter extends PagerAdapter {
         view.setOnClickListener(v -> new Thread() {
             @Override
             public void run() {
-                OrderDao orderDao = new OrderDaoImpl();
+                OrderDao orderDao = connectionManager.orderDao();
                 Order order = new Order();
                 order.setUser(models.get(position).getUser());
                 order.setOffer(models.get(position).getOffer());

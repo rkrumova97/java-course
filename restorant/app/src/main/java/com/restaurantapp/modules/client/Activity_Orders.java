@@ -8,18 +8,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.OfferDao;
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.dao.impl.OfferDaoImpl;
-import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.CardModel;
 import com.restaurantapp.models.Offer;
 import com.restaurantapp.models.OrderAdapter;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Activity_Orders extends AppCompatActivity {
+public class  Activity_Orders extends AppCompatActivity {
 
     ViewPager viewPager;
     OrderAdapter adapter;
@@ -38,6 +37,11 @@ public class Activity_Orders extends AppCompatActivity {
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     BottomNavigationView profile;
+    private ConnectionManager connectionManager;
+
+    public Activity_Orders(){
+            connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -80,7 +84,7 @@ public class Activity_Orders extends AppCompatActivity {
 
                 User user = new User();
                 try {
-                    UserDao userDao = new UserDaoImpl();
+                    UserDao userDao = connectionManager.userDao();
                     user = userDao.readUser(emailKey);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -94,7 +98,7 @@ public class Activity_Orders extends AppCompatActivity {
                 }
 
 
-                OfferDao offerDao = new OfferDaoImpl();
+                OfferDao offerDao = connectionManager.offerDao();
                 List<Offer> offers = new ArrayList<>();
                 try {
                     offers = offerDao.readAllOffer();
@@ -108,7 +112,7 @@ public class Activity_Orders extends AppCompatActivity {
                     int finalResID = resID[0];
                     finalOffers.forEach(i -> models.add(new CardModel(finalResID, i.getText(), i.getPrice().toString(), i.getText(), i, finalUser)));
 
-                    adapter = new OrderAdapter(models, Activity_Orders.this);
+                    adapter = new OrderAdapter(models, Activity_Orders.this, connectionManager);
 
                     viewPager = findViewById(R.id.viewPager_recommended);
                     viewPager.setAdapter(adapter);

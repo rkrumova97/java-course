@@ -1,28 +1,32 @@
 package com.restaurantapp.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+@Entity
+@TypeConverters(OfferConverter.class)
 public class Offer {
+    @PrimaryKey
     private Long id;
 
+    @ColumnInfo
     private String text;
 
+    @ColumnInfo
     private Long price;
 
+    @ColumnInfo
     private Category category;
 
+    @ColumnInfo
     private Restaurant restaurant;
 
+    @ColumnInfo
     private String title;
 
     public Offer() {
-    }
-
-    public Offer(Long id, String text, Long price, Category category, Restaurant restaurant, String title) {
-        this.id = id;
-        this.text = text;
-        this.price = price;
-        this.category = category;
-        this.restaurant = restaurant;
-        this.title = title;
     }
 
     public Long getId() {

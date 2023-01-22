@@ -12,18 +12,17 @@ import android.widget.EditText;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.CategoryDao;
 import com.restaurantapp.dao.OfferDao;
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.dao.impl.CategoryDaoImpl;
-import com.restaurantapp.dao.impl.OfferDaoImpl;
-import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.Category;
 import com.restaurantapp.models.Offer;
 import com.restaurantapp.models.User;
@@ -43,6 +42,11 @@ public class EditOfferActivity extends AppCompatActivity {
     EditText title;
     private ChipGroup chipsPrograms;
     String category;
+    private ConnectionManager connectionManager;
+
+    public EditOfferActivity(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -70,9 +74,9 @@ public class EditOfferActivity extends AppCompatActivity {
 
         });
 
-        UserDao userDao = new UserDaoImpl();
-        OfferDao offerDao = new OfferDaoImpl();
-        CategoryDao categoryDao = new CategoryDaoImpl();
+        UserDao userDao = connectionManager.userDao();
+        OfferDao offerDao = connectionManager.offerDao();
+        CategoryDao categoryDao = connectionManager.categoryDao();
         price = findViewById(R.id.price);
         text = findViewById(R.id.offer);
         title = findViewById(R.id.title);
@@ -122,7 +126,7 @@ public class EditOfferActivity extends AppCompatActivity {
             Optional<Category> category = categories.get().stream().filter(j -> j.getCategory().equals(this.category)).findFirst();
             offer[0].setCategory(category.get());
             try {
-                offerDao.updateOffer(offer[0]);
+                offerDao.createOffer(offer[0]);
                 Snackbar.make(profile, R.string.saved, Snackbar.LENGTH_SHORT)
                         .show();
                 startActivity(new Intent(this, MenuPage.class));

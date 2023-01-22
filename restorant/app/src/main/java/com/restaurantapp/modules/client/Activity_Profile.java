@@ -1,7 +1,5 @@
 package com.restaurantapp.modules.client;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +8,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.User;
 
 public class Activity_Profile extends AppCompatActivity {
@@ -22,7 +23,11 @@ public class Activity_Profile extends AppCompatActivity {
     private TextView username;
     private TextView email;
     BottomNavigationView profile;
+    private ConnectionManager connectionManager;
 
+    public Activity_Profile(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,7 @@ public class Activity_Profile extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    UserDao userDao = new UserDaoImpl();
+                    UserDao userDao = connectionManager.userDao();
                     user[0] = userDao.readUser(emailKey);
                 } catch (Exception e) {
                     e.printStackTrace();

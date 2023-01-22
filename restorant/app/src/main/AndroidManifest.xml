@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning"
-        android:dataExtractionRules="@xml/data_extraction_rules">
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        tools:targetApi="s">
         <activity android:name=".modules.client.Activity_More" />
 <!--        <activity android:name=".modules.client.Activity_Market" />-->
 <!--        <activity android:name=".modules.client.Activity_HomePage_Client" />-->

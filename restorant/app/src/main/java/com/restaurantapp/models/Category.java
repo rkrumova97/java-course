@@ -1,18 +1,19 @@
 package com.restaurantapp.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Category {
+    @PrimaryKey
     private Long id;
 
+    @ColumnInfo
     private String category;
 
     public Category() {
     }
-
-    public Category(Long id, String category) {
-        this.id = id;
-        this.category = category;
-    }
-
     public Long getId() {
         return id;
     }

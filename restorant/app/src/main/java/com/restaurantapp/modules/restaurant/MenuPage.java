@@ -1,24 +1,24 @@
 package com.restaurantapp.modules.restaurant;
 
 import android.animation.ArgbEvaluator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.restaurantapp.Activity_Login;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.OfferDao;
-import com.restaurantapp.dao.impl.OfferDaoImpl;
 import com.restaurantapp.models.Adapter;
 import com.restaurantapp.models.CardModel;
 import com.restaurantapp.models.Offer;
@@ -37,8 +37,14 @@ public class MenuPage extends AppCompatActivity {
     BottomNavigationView profile;
     Button newoff;
 
+    private final ConnectionManager connectionManager;
+
+    public MenuPage(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
+
+    @SuppressLint("NonConstantResourceId")
     @Override
-    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_page_r);
@@ -83,7 +89,7 @@ public class MenuPage extends AppCompatActivity {
                 }
 
 
-                OfferDao offerDao = new OfferDaoImpl();
+                OfferDao offerDao = connectionManager.offerDao();
                 List<Offer> offers = new ArrayList<>();
                 try {
                     offers = offerDao.readAllOffer();

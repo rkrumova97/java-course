@@ -1,54 +1,53 @@
 package com.restaurantapp.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.util.List;
 
-
+@Entity
+@TypeConverters(UserConverter.class)
 public class User {
-
+    @PrimaryKey
     private Long id;
 
+    @ColumnInfo
     private String username;
 
+    @ColumnInfo
     private String password;
 
+    @ColumnInfo
     private String token;
 
+    @ColumnInfo
     private String email;
 
+    @ColumnInfo
     private String address;
 
+    @ColumnInfo
     private List<Category> categories;
 
+    @ColumnInfo(name = "role_id")
     private Role role;
 
+    @ColumnInfo
     private String firstName;
 
+    @ColumnInfo
     private String lastName;
 
+    @ColumnInfo
     private String phoneNumber;
 
+    @ColumnInfo(name = "restaurant_id")
     private Restaurant restaurant;
 
     public User() {
     }
-
-    public User(Long id, String username, String password, String token, String email,
-                String address, List<Category> categories, Role role, String firstName,
-                String lastName, String phoneNumber, Restaurant restaurant) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.token = token;
-        this.email = email;
-        this.address = address;
-        this.categories = categories;
-        this.role = role;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.restaurant = restaurant;
-    }
-
     public Long getId() {
         return id;
     }
@@ -74,7 +73,6 @@ public class User {
         setUsername(username);
         return this;
     }
-
 
     public String getPassword() {
         return password;

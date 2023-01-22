@@ -3,27 +3,24 @@ package com.restaurantapp.modules.restaurant;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.restaurantapp.R;
+import com.restaurantapp.configuration.ConnectionManager;
 import com.restaurantapp.dao.CategoryDao;
 import com.restaurantapp.dao.OfferDao;
 import com.restaurantapp.dao.UserDao;
-import com.restaurantapp.dao.impl.CategoryDaoImpl;
-import com.restaurantapp.dao.impl.OfferDaoImpl;
-import com.restaurantapp.dao.impl.UserDaoImpl;
 import com.restaurantapp.models.Category;
 import com.restaurantapp.models.Offer;
 import com.restaurantapp.models.User;
@@ -43,8 +40,13 @@ public class OfferPage extends AppCompatActivity {
     private ChipGroup chipsPrograms;
     String category;
 
+    private ConnectionManager connectionManager;
+
+    public OfferPage(){
+        connectionManager = Room.databaseBuilder(this, ConnectionManager.class, "restaurant").build();
+    }
+
     @Override
-    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_offer);
@@ -68,9 +70,9 @@ public class OfferPage extends AppCompatActivity {
 
         });
 
-        UserDao userDao = new UserDaoImpl();
-        OfferDao offerDao = new OfferDaoImpl();
-        CategoryDao categoryDao = new CategoryDaoImpl();
+        UserDao userDao = connectionManager.userDao();
+        OfferDao offerDao = connectionManager.offerDao();
+        CategoryDao categoryDao = connectionManager.categoryDao();
         price = findViewById(R.id.price);
         text = findViewById(R.id.offer);
         title = findViewById(R.id.title);

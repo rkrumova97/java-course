@@ -1,18 +1,22 @@
 package com.restaurantapp.dao;
 
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+
 import com.restaurantapp.models.Order;
 
 import java.util.List;
 
-public interface OrderDao {
-    public Order createOrder(Order Order) throws Exception;
+@Dao
+public
+interface OrderDao {
+     @Insert
+     void createOrder(Order Order) throws Exception;
 
-    public Order readOrder(Long id) throws Exception;
+     @Query("SELECT * FROM `order` where `order`.id = :id")
+     Order readOrder(Long id) throws Exception;
 
+     @Query("SELECT * FROM `order`")
     public List<Order> readAllOrder() throws Exception;
-
-
-    Order updateOrder(Order order, String changedAttribute, Object changeValue);
-
-    public void deleteOrder(Long id);
 }
